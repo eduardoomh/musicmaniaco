@@ -1,0 +1,35 @@
+<div class="main-card">
+	<slot name="left" />
+	<slot name="right" />
+</div>
+
+<style>
+	.main-card {
+		display: flex;
+		justify-content: center;
+		height: 600px;
+		width: 1200px;
+		padding: 0 24px;
+		border-radius: 16px;
+		gap: 32px;
+		background-image: linear-gradient(90deg, #39ff68 0%, #0ce33f 100%);
+	}
+
+	@media (max-width: 768px) {
+		.main-card {
+			flex-direction: column;
+			align-items: center;
+			width: calc(100% - 32px);
+			height: auto;
+			padding: 42px 8px;
+			gap: 24px;
+		}
+	}
+
+	@media (min-width: 769px) and (max-width: 1300px) {
+		.main-card {
+			width: 90%;
+			padding: 0 16px;
+		}
+	}
+</style>

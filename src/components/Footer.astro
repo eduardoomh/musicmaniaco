@@ -1,0 +1,267 @@
+---
+import logo from '../assets/music.maniaco-full-logo-negative.svg';
+import instagram from '../assets/instagram-icon.svg';
+import youtube from '../assets/youtube.svg';
+import circleX from '../assets/circle-x.svg';
+
+interface Props {
+	gradientStart?: string;
+	gradientEnd?: string;
+	gradientEndAt?: number;
+}
+
+const {
+	gradientStart = '#05291d',
+	gradientEnd = '#1d1e1e',
+	gradientEndAt = 94,
+} = Astro.props;
+---
+
+<footer class="footer">
+	<div class="footer__content">
+		<div class="footer__content_left">
+			<img src={logo.src} width={logo.width} height={logo.height} alt="Musicmaniaco" />
+			<p>Una herramienta para coleccionistas, productores y amantes de la música que quieren documentar, ordenar y compartir su música con claridad.</p>
+			<div class="footer__content_left_social">
+				<img src={instagram.src} width={28} height={28} alt="Instagram" />
+				<img src={youtube.src} width={28} height={28} alt="YouTube" />
+				<img src={circleX.src} width={circleX.width} height={circleX.height} alt="Circle X" />
+			</div>
+		</div>
+		<hr class="footer__content-divider" />
+		<div class="footer__content_right">
+			<nav>
+				<h3>Productos</h3>
+				<ul>
+					<li>Colecciones</li>
+					<li>Documentación</li>
+					<li>Exportación</li>
+				</ul>
+			</nav>
+			<nav>
+				<h3>Comunidad</h3>
+				<ul>
+					<li>Blog</li>
+					<li>Preguntas frecuentes</li>
+					<li>Comunidad</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<hr class="footer__copyright-divider" />
+	<div class="footer__copyright">
+		<p>© 2026 Musicmaniaco. Todos los derechos reservados.</p>
+		<nav>
+			<ul>
+				<li>Privacidad</li>
+				<li>Términos</li>
+			</ul>
+		</nav>
+	</div>
+</footer>
+
+<style define:vars={{ gradientStart, gradientEnd, gradientEndAt: `${gradientEndAt}%` }}>
+	.footer {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 280px;
+		background: linear-gradient(
+			90deg,
+			var(--gradientStart) 0%,
+			var(--gradientEnd) var(--gradientEndAt)
+		);
+		color: #f6f0e3;
+	}
+
+	.footer__content {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		padding: 40px 0;
+		width: calc(100% - 200px);
+		margin: 0 auto;
+	}
+
+	.footer__content-divider {
+		display: none;
+		border: none;
+		height: 0.5px;
+		background-color: #aba8a8;
+		margin: 0;
+	}
+
+	.footer__content_left {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		width: 400px;
+	}
+
+	.footer p{
+		color: #fff;
+		opacity: 0.7;
+		font-size: 14px;
+	}
+
+	.footer__content_right {
+		display: flex;
+		flex: 1;
+		justify-content: flex-end;
+		gap: 40px;
+		list-style: none;
+	}
+
+	.footer__content_right nav {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.footer__content_right nav h3 {
+		font-size: 14px;
+		font-weight: bold;
+		color: white;
+		margin: 0 0 8px 0;
+	}
+
+	.footer__content_right nav ul {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		color: #fff;
+		opacity: 0.7;
+		font-size: 14px;
+	}
+
+	.footer__content_left_social {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+
+	.footer__copyright {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: calc(100% - 200px);
+		height: 20px;
+		margin: 0 auto;
+	}
+
+	.footer__copyright p {
+		width: 400px;
+		margin: 0;
+	}
+
+	.footer__copyright-divider {
+		display: none;
+		border: none;
+		height: 0.5px;
+		background-color: #aba8a8;
+		margin: 0;
+	}
+
+	.footer__copyright nav ul {
+		display: flex;
+		gap: 16px;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		font-size: 14px;
+		color: #fff;
+		opacity: 0.7;
+	}
+
+	@media (min-width: 769px) and (max-width: 1100px) {
+		.footer__content {
+			width: calc(100% - 48px);
+			margin: 0 24px;
+		}
+		.footer__copyright{
+			width: calc(100% - 48px);
+			margin: 0 24px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.footer {
+			box-sizing: border-box;
+			max-width: 100%;
+			height: auto;
+			min-height: 280px;
+			padding: 0 24px;
+			overflow-x: hidden;
+		}
+
+		.footer__content {
+			flex-direction: column;
+			align-items: stretch;
+			box-sizing: border-box;
+			width: 100%;
+			max-width: 100%;
+			min-width: 0;
+			gap: 24px;
+			padding: 32px 0 24px;
+		}
+
+		.footer__content_left {
+			width: 100%;
+			max-width: 100%;
+			min-width: 0;
+		}
+
+		.footer__content_left img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.footer p {
+			overflow-wrap: break-word;
+		}
+
+		.footer__content-divider {
+			display: block;
+			width: 100%;
+		}
+
+		.footer__content_right {
+			width: 100%;
+			max-width: 100%;
+			min-width: 0;
+			flex: none;
+			justify-content: space-between;
+			gap: 24px;
+		}
+
+		.footer__copyright-divider {
+			display: block;
+			width: 100%;
+			max-width: 100%;
+			margin: 16px 0;
+		}
+
+		.footer__copyright {
+			box-sizing: border-box;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 12px;
+			width: 100%;
+			max-width: 100%;
+			min-width: 0;
+			height: auto;
+			padding-bottom: 24px;
+		}
+
+		.footer__copyright p {
+			width: 100%;
+		}
+
+		.footer__copyright nav ul {
+			padding-left: 0;
+		}
+	}
+</style>

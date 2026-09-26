@@ -1,0 +1,210 @@
+---
+import AntIcon from './icons/AntIcon.astro';
+import { CloseOutlined, MenuOutlined } from './icons/outlined';
+import logo from '../assets/music.maniaco.svg';
+import instagramIcon from '../assets/instagram-icon.svg';
+
+interface Props {
+	gradientStart?: string;
+	gradientEnd?: string;
+	gradientEndAt?: number;
+}
+
+const {
+	gradientStart = '#05291d',
+	gradientEnd = '#1d1e1e',
+	gradientEndAt = 94,
+} = Astro.props;
+---
+
+<header class="site-header">
+	<a class="site-header__logo" href="/" aria-label="Musicmaniaco inicio">
+		<img src={logo.src} width={logo.width} height={logo.height} alt="" />
+	</a>
+
+	<nav id="site-nav" class="site-nav" aria-label="Principal">
+		<ul>
+			<li>Inicio</li>
+			<li>Colecciones</li>
+			<li>Documentación</li>
+		</ul>
+		<button type="button" class="site-nav__cta">Crea tu cuenta</button>
+	</nav>
+
+	<div class="site-header__actions">
+		<a href="https://instagram.com" aria-label="Instagram">
+			<img src={instagramIcon.src} width={36} height={36} alt="" />
+		</a>
+		<button
+			type="button"
+			class="menu-toggle"
+			aria-expanded="false"
+			aria-controls="site-nav"
+			aria-label="Abrir menú"
+		>
+			<span class="menu-toggle__open">
+				<AntIcon icon={MenuOutlined} size={22} />
+			</span>
+			<span class="menu-toggle__close">
+				<AntIcon icon={CloseOutlined} size={22} />
+			</span>
+		</button>
+	</div>
+</header>
+
+<script>
+	function setupHeaderMenu() {
+		const header = document.querySelector('.site-header');
+		const toggle = document.querySelector('.menu-toggle');
+
+		if (!header || !toggle || toggle.dataset.bound === 'true') return;
+
+		toggle.dataset.bound = 'true';
+		toggle.addEventListener('click', () => {
+			const isOpen = header.classList.toggle('site-header--open');
+			toggle.setAttribute('aria-expanded', String(isOpen));
+			toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+		});
+	}
+
+	setupHeaderMenu();
+	document.addEventListener('astro:page-load', setupHeaderMenu);
+</script>
+
+<style define:vars={{ gradientStart, gradientEnd, gradientEndAt: `${gradientEndAt}%` }}>
+	.site-header {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1rem;
+		background: linear-gradient(
+			90deg,
+			var(--gradientStart) 0%,
+			var(--gradientEnd) var(--gradientEndAt)
+		);
+		color: #f6f0e3;
+		padding: 0 24px;
+		min-height: 74px;
+	}
+
+	.site-header__logo {
+		display: inline-flex;
+		line-height: 0;
+	}
+
+	.site-nav {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-left: auto;
+	}
+
+	.site-nav ul {
+		list-style: none;
+		display: flex;
+		gap: 1rem;
+		margin: 0;
+		padding: 0;
+	}
+
+	.site-nav li {
+		color: #ffffffb3;
+		font-size: 14px;
+		font-weight: 500;
+	}
+
+	.site-nav__cta {
+		height: 36px;
+		padding: 10px 16px;
+		background: #f6f0e3;
+		border: none;
+		border-radius: 24px;
+		font-size: 14px;
+		font-weight: bold;
+		color: #07291e;
+		cursor: pointer;
+		white-space: nowrap;
+	}
+
+	.site-header__actions {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.menu-toggle {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		border: none;
+		background: transparent;
+		color: #f6f0e3;
+		cursor: pointer;
+	}
+
+	.site-header:not(.site-header--open) .menu-toggle__close {
+		display: none;
+	}
+
+	.site-header--open .menu-toggle__open {
+		display: none;
+	}
+
+	@media (max-width: 768px) {
+		.site-header {
+			position: relative;
+			flex-wrap: nowrap;
+			height: 74px;
+			min-height: 74px;
+			padding: 0 16px;
+			z-index: 100;
+		}
+
+		.site-header__logo {
+			margin-right: auto;
+		}
+
+		.site-header__actions {
+			margin-left: 0;
+		}
+
+		.site-nav {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			display: none;
+			flex-direction: column;
+			align-items: stretch;
+			margin-left: 0;
+			padding: 16px;
+			gap: 16px;
+			background: linear-gradient(
+				90deg,
+				var(--gradientStart) 0%,
+				var(--gradientEnd) var(--gradientEndAt)
+			);
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		}
+
+		.site-header--open .site-nav {
+			display: flex;
+		}
+
+		.site-nav ul {
+			flex-direction: column;
+			gap: 12px;
+		}
+
+		.site-nav__cta {
+			width: 100%;
+		}
+
+		.menu-toggle {
+			display: inline-flex;
+		}
+	}
+</style>

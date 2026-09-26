@@ -1,0 +1,13 @@
+---
+import HomeAboutCard from './home/HomeAboutCard.astro';
+import HomeHeroLeft from './home/HomeHeroLeft.astro';
+import HomeMainCard from './home/HomeMainCard.astro';
+import HomeSection from './home/HomeSection.astro';
+---
+
+<HomeSection>
+	<HomeMainCard>
+		<HomeHeroLeft slot="left" />
+		<HomeAboutCard slot="right" />
+	</HomeMainCard>
+</HomeSection>

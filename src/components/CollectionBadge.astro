@@ -1,0 +1,33 @@
+---
+import type { IconDefinition } from '@ant-design/icons-svg/lib/types';
+import AntIcon from './icons/AntIcon.astro';
+import { AppstoreOutlined } from './icons/outlined';
+
+interface Props {
+	label?: string;
+	icon?: IconDefinition;
+}
+
+const { label = 'Colección', icon = AppstoreOutlined } = Astro.props;
+---
+
+<div class="collection-badge">
+	<AntIcon icon={icon} size={12} />
+	<span>{label}</span>
+</div>
+
+<style>
+	.collection-badge {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
+		height: 20px;
+		background-color: #10e543;
+		color: #000;
+		padding: 4px 8px;
+		border-radius: 8px;
+		font-size: 12px;
+		font-weight: 600;
+	}
+</style>

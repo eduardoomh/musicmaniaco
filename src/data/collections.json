@@ -1,0 +1,297 @@
+[
+    {
+        "id": "01-profile-013442120sdkjr",
+        "name": "Lory´s Version (Vol. 1)",
+        "createdAt": "2026-09-25T12:00:00.000Z",
+        "updatedAt": "2026-09-25T12:00:00.000Z",
+        "userId": "user-1",
+        "image": "collections/lory´s-version.JPG",
+        "description": "this music collection is a compilation of my favorite songs from the 90s and 2000s.",
+        "user": {
+            "id": "user-1",
+            "name": "Eduardo Martínez",
+            "email": "eduardoomh@outlook.com",
+            "username": "eduardoomh",
+            "avatar": "https://github.com/eduardoomh.png",
+            "bio": "I'm a software engineer and music producer."
+        },
+        "status": "active",
+        "settings": {
+            "showSongsDescription": true,
+            "backgroundType": "gradient",
+            "gradient": {
+                "angle": 90,
+                "stops": [
+                    { "color": "#3D195D", "at": 0 },
+                    { "color": "#2C213A", "at": 72 },
+                    { "color": "#231833", "at": 100 }
+                ]
+            },
+            "borderColor": "#F75BD3",
+            "separatorBarColor": "#785E93",
+            "descriptionCardColor": "#8C869480",
+            "descriptionCardBorderColor": "#F75BD3"
+        },
+        "songs": [
+            {
+                "id": "01-song-013442120sdkjr",
+                "name": "Runaway",
+                "artists": ["Sasha Alex Sloan"],
+                "duration": "3:37",
+                "album":{
+                    "name": "sad girl - EP",
+                    "image": "https://i1.sndcdn.com/artworks-2MNYFjHRieaI-0-t500x500.jpg"
+                },
+                "description": "Runaway is a song by Sasha Alex Sloan from the album sad girl - EP. It was released on September 25, 2018.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/runaway/1371069273?i=1371069732",
+                    "spotify": "https://open.spotify.com/intl-es/track/2UGpJ5or8EJVtcFuNdyFgg?si=531dbdd83a854e82",
+                    "youtube": "https://youtu.be/SElMkUNfPl0?si=wwgtpE3rwS49Xrmd"
+                }
+            },
+            {
+                "id": "02-song-013442120sdkjr",
+                "name": "Once in a While [smile]",
+                "artists": ["Skott"],
+                "duration": "3:00",
+                "album":{
+                    "name": "Once in a While [smile] - Single",
+                    "image": "https://i.scdn.co/image/ab67616d0000b2733ab6493963e6b6a626900f48"
+                },
+                "description": "Once in a While [smile] is a song by Skott from the album Once in a While [smile] - Single. It was released on September 25, 2020.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/once-in-a-while-smile/1633719932?i=1633720373",
+                    "spotify": "https://open.spotify.com/intl-es/track/0KfZG5q5Dwzfkb1DItAczm?si=25ecb0b397a84f5a",
+                    "youtube": "https://youtu.be/fS5hSqBXnuo?si=esm1_48W6Cr-06vO"
+                }
+            },
+            {
+                "id": "03-song-013442120sdkjr",
+                "name": "This is how you fall in love",
+                "artists": ["Jeremy Zucker", "Chelsea Cutler"],
+                "duration": "2:55",
+                "album":{
+                    "name": "Brent ii",
+                    "image": "https://i.scdn.co/image/ab67616d0000b273bdcc1b27dac22bfb3a57c2de"
+                },
+                "description": "This is how you fall in love is a song by John Mayer from the album Continuum. It was released on September 25, 2006.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/this-is-how-you-fall-in-love/1551219132?i=1551219285",
+                    "spotify": "https://open.spotify.com/intl-es/track/1aEsTgCsv8nOjEgyEoRCpS?si=3ea03ea923114b87",
+                    "youtube": "https://youtu.be/6qkgVgjN188?si=UDewHoV2swLpTzFO"
+                }
+            },
+            {
+                "id": "04-song-013442120sdkjr",
+                "name": "our neighbors.",
+                "artists": ["will hyde"],
+                "duration": "3:05",
+                "album":{
+                    "name": "nothing ever changes.",
+                    "image": "https://images.genius.com/b49b268022c1e416b10ad2eda340984a.640x640x1.jpg"
+                },
+                "description": "This is how you fall in love is a song by Jeremy Zucker from the album Brent ii. It was released on September 25, 2020.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/our-neighbors/1796259841?i=1796259845",
+                    "spotify": "https://open.spotify.com/intl-es/track/1ghjYcunq4ObQRGJDHKCHj?si=08f4b8438796437c",
+                    "youtube": "https://youtu.be/joG_Mh2cuJQ?si=dukkxH4a_S0ckMDY"
+                }
+            },
+            {
+                "id": "05-song-013442120sdkjr",
+                "name": "A.M.",
+                "artists": ["One Direction"],
+                "duration": "3:29",
+                "album":{
+                    "name": "Made in the A.M (Deluxe Edition)",
+                    "image": "https://i.scdn.co/image/ab67616d0000b2734a075ca70ae4143a37eb4fbe"
+                },
+                "description": "Flowers is a song by Miley Cyrus from the album Flowers - Single. It was released on September 25, 2023.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/a-m/1040170924?i=1040171631",
+                    "spotify": "https://open.spotify.com/intl-es/track/5omYVLodGmaxnhua99xIE8?si=aec9583c8e574def",
+                    "youtube": "https://youtu.be/HBttoBTxkAs?si=I588_mLQZc9yKwv9"
+                }
+            },
+            {
+                "id": "06-song-013442120sdkjr",
+                "name": "2U",
+                "artists": ["David Guetta", "Justin Bieber"],
+                "duration": "3:15",
+                "album":{
+                    "name": "2U",
+                    "image": "https://i.scdn.co/image/ab67616d0000b27345c5570d4a66346d8f683913"
+                },
+                "description": "2U is a song by David Guetta and Justin Bieber from the album 2U. It was released on September 25, 2017.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/2u-feat-justin-bieber/1445023441?i=1445023444",
+                    "spotify": "https://open.spotify.com/intl-es/track/762UXiwEHYY97VL45sAUPR?si=0a116e85ed8c427a",
+                    "youtube": "https://youtu.be/3X3xtRNb20s?si=-D4rpokqhSc94e_W"
+                }
+            },
+            {
+                "id": "07-song-013442120sdkjr",
+                "name": "Remi",
+                "artists": ["Reyno"],
+                "duration": "3:28",
+                "album":{
+                    "name": "Fuerza Ancestral",
+                    "image": "https://i.scdn.co/image/ab67616d0000b273efed87ee2e83a0d7004abe30"
+                },
+                "description": "Remi is a song by Reyno from the album Fuerza Ancestral. It was released on September 25, 2022.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/remi/1436092734?i=1436092739",
+                    "spotify": "https://open.spotify.com/intl-es/track/1lfnDo6kfOjXg5yW92NJ3S?si=74ca634eb5d447ce",
+                    "youtube": "https://youtu.be/sldTsvDoaB4?si=VXzE2LxfBgoQH7VE"
+                }
+            },
+            {
+                "id": "08-song-013442120sdkjr",
+                "name": "Crush",
+                "artists": ["Yuna", "Usher"],
+                "duration": "4:03",
+                "album":{
+                    "name": "Chapters (Deluxe)",
+                    "image": "https://i.scdn.co/image/ab67616d0000b27343af1e35eb5caee319858e51"
+                },
+                "description": "Crush is a song by Yuna and Usher from the album Crush. It was released on September 25, 2022.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/crush-feat-usher/1440842183?i=1440842581",
+                    "spotify": "https://open.spotify.com/intl-es/track/3Txcx4jhuiTZSvhAL0WaRc?si=d9e31adeb01e4e94",
+                    "youtube": "https://youtu.be/sldTsvDoaB4?si=VXzE2LxfBgoQH7VE"
+                }
+            },
+            {
+                "id": "09-song-013442120sdkjr",
+                "name": "No digas nada",
+                "artists": ["LATIN MAFIA"],
+                "duration": "3:43",
+                "album":{
+                    "name": "No digas nada",
+                    "image": "https://i.scdn.co/image/ab67616d0000b273508432681fdcfcbd0a758622"
+                },
+                "description": "No digas nada is a song by LATIN MAFIA from the album No digas nada. It was released on September 25, 2022.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/no-digas-nada/1752784613?i=1752784617",
+                    "spotify": "https://open.spotify.com/intl-es/track/4wtWL0UV8tCPv9VbUMLXYP?si=884cb950ed5648f7",
+                    "youtube": "https://youtu.be/9G9WhNiEqMs?si=xRWFunOEbV0dMSXu"
+                }
+            },
+            {
+                "id": "10-song-013442120sdkjr",
+                "name": "I Don't Wanna Live Forever (Fifty Shades Darker)",
+                "artists": ["ZAYN", "Taylor Swift"],
+                "duration": "4:06",
+                "album":{
+                    "name": "Fifty Shades Darker (Original Motion Picture Soundtrack)",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP0v0dTws14ybOH-szKgbLKVtaF0AzbDFPaq24F5kYXsNsOEJPdwKtwTw&s=10"
+                },
+                "description": "I Don't Wanna Live Forever (Fifty Shades Darker) is a song by ZAYN and Taylor Swift from the album Fifty Shades Darker (Original Motion Picture Soundtrack). It was released on September 25, 2022.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/i-dont-wanna-live-forever-fifty-shades-darker/1440880777?i=1440880860",
+                    "spotify": "https://open.spotify.com/intl-es/track/2y5aJvzXhHPA94U5GFAcXe?si=493ea504b6474bcb",
+                    "youtube": "https://youtu.be/AY9blLYMKnI?si=YnCw2sH0chpd6Sdq"
+                }
+            },
+            {
+                "id": "11-song-013442120sdkjr",
+                "name": "We Still Love",
+                "artists": ["Olly Murs"],
+                "duration": "3:16",
+                "album":{
+                    "name": "Never Been Better (Expanded Edition)",
+                    "image": "https://i.scdn.co/image/ab67616d0000b27375481dc0eda56dac215eab5a"
+                },
+                "description": "We Still Love is a song by Olly Murs from the album Never Been Better (Expanded Edition). It was released on September 25, 2022.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/we-still-love/1520414682?i=1520415278",
+                    "spotify": "https://open.spotify.com/intl-es/track/1onQQgHzXknNBxKgZhJydP?si=b1123a97de944c33",
+                    "youtube": "https://youtu.be/jskzxUcWz68?si=u2Pftqev9gJXb124"
+                }
+            },
+            {
+                "id": "12-song-013442120sdkjr",
+                "name": "Tenderly",
+                "artists": ["Nat & Alex Wolff"],
+                "duration": "3:49",
+                "album":{
+                    "name": "Public Places",
+                    "image": "https://i.scdn.co/image/ab67616d0000b27394931fc322b5aefe894cea96"
+                },
+                "description": "Tenderly is a song by Nat & Alex Wolff from the album Public Places. It was released on September 25, 2022.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/tenderly/1178728230?i=1178728389",
+                    "spotify": "https://open.spotify.com/intl-es/track/0nSg8ZgfOrBOKfKHvHwz6Z?si=0cba4a8fba534cf4",
+                    "youtube": "https://youtu.be/rf36vXB21Ys?si=ZTuIn8wb15ay5HfR"
+                }
+            },
+            {
+                "id": "13-song-013442120sdkjr",
+                "name": "Only Love Song",
+                "artists": ["Chloe Lilac"],
+                "duration": "4:36",
+                "album":{
+                    "name": "you were good to me",
+                    "image": "https://cdn-images.dzcdn.net/images/cover/e74dfa6886e4ed7d247850564eb28337/1900x1900-000000-80-0-0.jpg"
+                },
+                "description": "Only Love Song is a song by Chloe Lilac from the album you were good to me. It was released on September 25, 2022.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/only-love-song/1618832958?i=1618832962",
+                    "spotify": "https://open.spotify.com/intl-es/track/0IWZdk1sIFtLPvM1wNiZMZ?si=210946a53b37475c",
+                    "youtube": "https://youtu.be/YOSm9b6BuXw?si=TE9VbiHlylRBuk8p"
+                }
+            },
+            {
+                "id": "14-song-013442120sdkjr",
+                "name": "Mi Corazón (feat. MC Davo)",
+                "artists": ["Arsenal de rimas", "MC Davo"],
+                "duration": "4:32",
+                "album":{
+                    "name": "Cara o cruz, pt. 1",
+                    "image": "https://cdn-images.dzcdn.net/images/cover/175340f57f943e88daba9f1fa7875d69/0x1900-000000-80-0-0.jpg"
+                },
+                "description": "Mi Corazón (feat. MC Davo) is a song by Arsenal de rimas and MC Davo from the album Mi Corazón (feat. MC Davo). It was released on September 25, 2022.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/mi-coraz%C3%B3n-feat-mc-davo/1018276937?i=1018277419",
+                    "spotify": "https://open.spotify.com/intl-es/track/1t9cFXkrMn9ZMKhQO7AWpq?si=e00dc1c6b6ab46b2",
+                    "youtube": "https://youtu.be/bfqL0NWlGJk?si=6WX1cL3keR7OC9r0"
+                }
+            }
+        ]
+    },
+    {
+        "id": "02-profile-013442120sdkjr3",
+        "name": "Olvidaste tus flotadores",
+        "createdAt": "2026-09-25T12:00:00.000Z",
+        "updatedAt": "2026-09-25T12:00:00.000Z",
+        "userId": "user-1",
+        "image": "collections/olvidaste-tus-flotadores.JPG",
+        "description": "this music collection is a compilation of my favorite songs from the 90s and 2000s.",
+        "user": {
+            "id": "user-1",
+            "name": "Eduardo Martínez",
+            "email": "eduardoomh@outlook.com",
+            "username": "eduardoomh",
+            "avatar": "https://github.com/eduardoomh.png",
+            "bio": "I'm a software engineer and music producer."
+        },
+        "status": "active",
+        "settings": {
+            "showSongsDescription": true,
+            "backgroundType": "gradient",
+            "gradient": {
+                "angle": 90,
+                "stops": [
+                    { "color": "#17577D", "at": 0 },
+                    { "color": "#113B56", "at": 72 },
+                    { "color": "#0C2C3F", "at": 100 }
+                ]
+            },
+            "borderColor": "#23E4E4",
+            "separatorBarColor": "#849793",
+            "descriptionCardColor": "#BDE7E080",
+            "descriptionCardBorderColor": "#23E4E4"
+        },
+        "songs": []
+    }
+]

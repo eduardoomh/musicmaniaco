@@ -1,0 +1,21 @@
+<div class="home-section">
+	<slot />
+</div>
+
+<style>
+	.home-section {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 800px;
+		width: 100%;
+		background-image: linear-gradient(90deg, #105941 0%, #13503c 48%, #285157 100%);
+	}
+
+	@media (max-width: 768px) {
+		.home-section {
+			height: auto;
+			padding: 42px 0;
+		}
+	}
+</style>

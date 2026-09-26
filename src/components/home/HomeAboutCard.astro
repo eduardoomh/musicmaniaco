@@ -1,0 +1,60 @@
+---
+import CardDescription from '../CardDescription.astro';
+import CardImage from '../CardImage.astro';
+import CollectionBadge from '../CollectionBadge.astro';
+import eduardoomh from '../../assets/collections/eduardoomh.jpeg';
+---
+
+<div class="about">
+	<div class="about__card">
+		<CardImage src={eduardoomh.src} alt="John's Party Music" />
+		<CollectionBadge />
+		<p class="about__card-secondary-text">15 canciones</p>
+		<h2>John's Party Music</h2>
+		<p class="about__card-secondary-text">22 de Agosto del 2026</p>
+		<hr class="about__card-hr" />
+		<CardDescription text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos." />
+	</div>
+</div>
+
+<style>
+	.about {
+		width: 400px;
+		background-color: #12483a;
+	}
+
+	.about__card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 12px;
+		margin-top: 24px;
+		padding: 0 40px;
+	}
+	.about__card h2 {
+		margin: 0;
+		font-size: 24px;
+		font-weight: 700;
+		color: #F6F0E3;
+	}
+	.about__card-secondary-text {
+		font-size: 12px;
+		padding: 0;
+		margin: 0;
+		color: #A4A4A4;
+	}
+	.about__card-hr {
+		width: 100%;
+		height: 0.5px;
+		background-color: #ABA8A8;
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		.about {
+			border-radius: 12px;
+			padding-bottom: 24px;
+		}
+	}
+</style>

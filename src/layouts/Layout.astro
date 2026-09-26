@@ -1,23 +1,55 @@
+---
+import { Font } from 'astro:assets';
+import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import maniacoFavicon from '../assets/maniaco-favicon.ico';
+
+interface Props {
+	gradientStart?: string;
+	gradientEnd?: string;
+	gradientEndAt?: number;
+}
+
+const {
+	gradientStart = '#05291d',
+	gradientEnd = '#1d1e1e',
+	gradientEndAt = 94,
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" href={maniacoFavicon} type="image/x-icon" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Musicmaniaco colecciones musicales</title>
+		<Font cssVariable="--font-inter" preload />
 	</head>
 	<body>
+		<SiteHeader gradientStart={gradientStart} gradientEnd={gradientEnd} gradientEndAt={gradientEndAt} />
 		<slot />
+		<Footer gradientStart={gradientStart} gradientEnd={gradientEnd} gradientEndAt={gradientEndAt} />
 	</body>
 </html>
 
-<style>
+<style define:vars={{ gradientStart, gradientEnd, gradientEndAt: `${gradientEndAt}%` }}>
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		font-family: var(--font-inter);
 	}
+
+	html {
+		background-color: var(--gradientStart);
+	}
+
+	body {
+		background-color: #ffffff;
+		isolation: isolate;
+	}
+
 </style>

@@ -1,0 +1,10 @@
+[
+  {
+    "id": "song-1",
+    "title": "Ejemplo",
+    "artistId": "artist-1",
+    "album": "Demo",
+    "year": 2026,
+    "duration": "3:21"
+  }
+]
