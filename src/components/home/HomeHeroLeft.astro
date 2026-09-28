@@ -7,26 +7,16 @@ import { FolderOpenOutlined, LinkOutlined } from '../icons/outlined';
 	<hr class="hero-left__divider hero-left__divider--top" />
 	<h1>Crea colecciones. <br /> documenta tu música. <br />Comparte.</h1>
 
-	<div class="hero-left__cards">
-		<article class="hero-left__card">
-			<div class="hero-left__card-icon" aria-hidden="true">
-				<AntIcon icon={FolderOpenOutlined} size={22} />
-			</div>
-			<p>
-				Crea un perfil, crea colecciones de música de cualquier temática, guárdalas,
-				compártelas y deja que la música hable por ti.
-			</p>
-		</article>
-		<article class="hero-left__card">
-			<div class="hero-left__card-icon" aria-hidden="true">
-				<AntIcon icon={LinkOutlined} size={22} />
-			</div>
-			<p>
-				Tus colecciones son agnósticas a cualquier servicio de streaming: crea una
-				colección y enlázala con una playlist que ya tengas.
-			</p>
-		</article>
-	</div>
+	<ul class="hero-left__list">
+		<li class="hero-left__item">
+			<AntIcon class="hero-left__item-icon" icon={FolderOpenOutlined} size={18} />
+			<span class="hero-left__item-text">Crea un perfil, crea colecciones de música de cualquier temática, guárdalas, compártelas y deja que la música hable por ti.</span>
+		</li>
+		<li class="hero-left__item">
+			<AntIcon class="hero-left__item-icon" icon={LinkOutlined} size={18} />
+			<span class="hero-left__item-text">Tus colecciones son agnósticas a cualquier servicio de streaming: crea una colección y enlázala con una playlist que ya tengas.</span>
+		</li>
+	</ul>
 	<hr class="hero-left__divider" />
 </div>
 
@@ -35,59 +25,51 @@ import { FolderOpenOutlined, LinkOutlined } from '../icons/outlined';
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		width: 550px;
+		width: 100%;
+		max-width: 550px;
+		min-width: 0;
 		height: 100%;
+		color: #124232;
 	}
 
 	.hero-left h1 {
 		margin: 0 0 20px;
 		font-size: 44px;
 		font-weight: 800;
-		color: #124232;
 		line-height: 1.15;
+		color: inherit;
 	}
 
-	.hero-left__cards {
+	.hero-left__list {
+		list-style: none;
+		margin: 0 0 20px;
+		padding: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
-		margin-bottom: 20px;
+		gap: 28px;
 	}
 
-	.hero-left__card {
-		display: flex;
-		align-items: flex-start;
-		gap: 14px;
-		margin: 0;
-		padding: 14px 16px;
-		border-radius: 12px;
-		background-color: #077256;
-	}
-
-	.hero-left__card-icon {
-		display: flex;
-		flex-shrink: 0;
+	.hero-left__item {
+		display: grid;
+		grid-template-columns: 22px minmax(0, 1fr);
+		column-gap: 12px;
 		align-items: center;
-		justify-content: center;
-		width: 42px;
-		height: 42px;
-		border-radius: 10px;
-		background-color: #07291e;
-		color: #39ff68;
+		margin: 0;
+		padding: 0 0 0 2px;
+		border-left: 3px solid rgba(7, 41, 30, 0.35);
+		padding-left: 14px;
 	}
 
-	.hero-left__card p {
-		margin: 0;
+	.hero-left__item-icon {
+		align-self: center;
+		color: #07291e;
+	}
+
+	.hero-left__item-text {
 		font-size: 15px;
 		font-weight: 500;
-		line-height: 1.5;
-		color: #f6f0e3;
-	}
-
-	.hero-left__coming-soon {
-		font-size: 20px;
-		font-weight: bold;
-		color: #07291e;
+		line-height: 1.55;
+		color: inherit;
 	}
 
 	.hero-left__divider {
@@ -109,19 +91,11 @@ import { FolderOpenOutlined, LinkOutlined } from '../icons/outlined';
 	}
 
 	@media (max-width: 768px) {
-		.hero-left {
-			width: 100%;
-		}
-
 		.hero-left h1 {
 			font-size: 36px;
 		}
 
-		.hero-left__card {
-			padding: 12px 14px;
-		}
-
-		.hero-left__card p {
+		.hero-left__item-text {
 			font-size: 14px;
 		}
 	}

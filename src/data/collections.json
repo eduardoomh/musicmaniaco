@@ -6,7 +6,7 @@
         "updatedAt": "2026-09-25T12:00:00.000Z",
         "userId": "user-1",
         "image": "collections/lory´s-version.JPG",
-        "description": "Lory’s Version es una colección musical nacida de un sentimiento que comenzó allá por 2024, sin saber todo lo que llegaría a significar. Desde entonces, ese sentimiento ha ido creciendo con el tiempo, entre momentos, recuerdos y todo aquello que a veces no sé cómo decirte. Y aunque han pasado los meses, aquí seguimos, escribiendo nuestra historia una canción a la vez. Una colección de amor, compromiso y sentimientos encontrados; mi manera de ponerle música a todo lo que siento por ti.",
+        "description": "Lory’s Version es una colección de canciones que le dedico a una persona muy especial. Canciones de amor, nostalgia y sentimientos encontrados que han acompañado nuestra historia desde 2024 hasta ahora. Más que una simple colección musical, quiero que sea una forma de demostrarte, con acciones, mi compromiso contigo. Una historia que todavía se sigue escribiendo, canción por canción, momento a momento.",
         "user": {
             "id": "user-1",
             "name": "Eduardo Martínez",
@@ -33,7 +33,7 @@
             },
             "borderColor": "#F75BD3",
             "separatorBarColor": "#785E93",
-            "descriptionCardColor": "#8C869480",
+            "descriptionCardColor": "#764f80d6",
             "descriptionCardBorderColor": "#F75BD3"
         },
         "songs": [
@@ -46,7 +46,7 @@
                     "name": "sad girl - EP",
                     "image": "https://i1.sndcdn.com/artworks-2MNYFjHRieaI-0-t500x500.jpg"
                 },
-                "description": "Runaway is a song by Sasha Alex Sloan from the album sad girl - EP. It was released on September 25, 2018.",
+                "description": "Esta canción trata sobre el autosabotaje, sobre cómo arruinamos las cosas cuando se ponen buenas. Y, ciertamente, es algo que me ha pasado algunas veces, y seguramente a ti también. Somos humanos, al fin y al cabo.",
                 "links": {
                     "appleMusic": "https://music.apple.com/mx/album/runaway/1371069273?i=1371069732",
                     "spotify": "https://open.spotify.com/intl-es/track/2UGpJ5or8EJVtcFuNdyFgg?si=531dbdd83a854e82",
@@ -62,7 +62,7 @@
                     "name": "Once in a While [smile] - Single",
                     "image": "https://i.scdn.co/image/ab67616d0000b2733ab6493963e6b6a626900f48"
                 },
-                "description": "Once in a While [smile] is a song by Skott from the album Once in a While [smile] - Single. It was released on September 25, 2020.",
+                "description": "Lo que me transmite esta canción es a ver el lado bueno a las cosas, aun que pasemos por cosas bastante amargas, es como, oye, tienes que sonreir de vez en cuando!",
                 "links": {
                     "appleMusic": "https://music.apple.com/mx/album/once-in-a-while-smile/1633719932?i=1633720373",
                     "spotify": "https://open.spotify.com/intl-es/track/0KfZG5q5Dwzfkb1DItAczm?si=25ecb0b397a84f5a",
@@ -78,7 +78,7 @@
                     "name": "Brent ii",
                     "image": "https://i.scdn.co/image/ab67616d0000b273bdcc1b27dac22bfb3a57c2de"
                 },
-                "description": "This is how you fall in love is a song by John Mayer from the album Continuum. It was released on September 25, 2006.",
+                "description": "La primera canción de amor de la colección, la letra es muy bonita, me recuerda a ti y por eso la he puesto.",
                 "links": {
                     "appleMusic": "https://music.apple.com/mx/album/this-is-how-you-fall-in-love/1551219132?i=1551219285",
                     "spotify": "https://open.spotify.com/intl-es/track/1aEsTgCsv8nOjEgyEoRCpS?si=3ea03ea923114b87",
@@ -94,7 +94,7 @@
                     "name": "nothing ever changes.",
                     "image": "https://images.genius.com/b49b268022c1e416b10ad2eda340984a.640x640x1.jpg"
                 },
-                "description": "This is how you fall in love is a song by Jeremy Zucker from the album Brent ii. It was released on September 25, 2020.",
+                "description": "La coloco acá más que nada por la anécdota de que te puse esta canción el otro día y estábamos tratando de entender su significado, aunque yo tenía otro en mente.",
                 "links": {
                     "appleMusic": "https://music.apple.com/mx/album/our-neighbors/1796259841?i=1796259845",
                     "spotify": "https://open.spotify.com/intl-es/track/1ghjYcunq4ObQRGJDHKCHj?si=08f4b8438796437c",
@@ -110,7 +110,7 @@
                     "name": "Made in the A.M (Deluxe Edition)",
                     "image": "https://i.scdn.co/image/ab67616d0000b2734a075ca70ae4143a37eb4fbe"
                 },
-                "description": "Flowers is a song by Miley Cyrus from the album Flowers - Single. It was released on September 25, 2023.",
+                "description": "Mis mejores ideas y mis mejores momentos contigo suceden de madrugada. Incluso, la mayoría de nuestras conversaciones eran de noche en aquellos tiempos.",
                 "links": {
                     "appleMusic": "https://music.apple.com/mx/album/a-m/1040170924?i=1040171631",
                     "spotify": "https://open.spotify.com/intl-es/track/5omYVLodGmaxnhua99xIE8?si=aec9583c8e574def",
@@ -118,19 +118,19 @@
                 }
             },
             {
-                "id": "06-song-013442120sdkjr",
-                "name": "2U",
-                "artists": ["David Guetta", "Justin Bieber"],
-                "duration": "3:15",
+                "id": "11-song-013742150sdkjr",
+                "name": "Let's Be Birds",
+                "artists": ["Jacob Whitesides"],
+                "duration": "3:13",
                 "album":{
-                    "name": "2U",
-                    "image": "https://i.scdn.co/image/ab67616d0000b27345c5570d4a66346d8f683913"
+                    "name": "A Piece of Me",
+                    "image": "https://i.scdn.co/image/ab67616d0000b27357fe61befd36139892fa2a05"
                 },
-                "description": "2U is a song by David Guetta and Justin Bieber from the album 2U. It was released on September 25, 2017.",
+                "description": "Seamos como aves y volemos juntos por todo el mundo, tachando del globo terráqueo los lugares que nunca imaginamos conocer.",
                 "links": {
-                    "appleMusic": "https://music.apple.com/mx/album/2u-feat-justin-bieber/1445023441?i=1445023444",
-                    "spotify": "https://open.spotify.com/intl-es/track/762UXiwEHYY97VL45sAUPR?si=0a116e85ed8c427a",
-                    "youtube": "https://youtu.be/3X3xtRNb20s?si=-D4rpokqhSc94e_W"
+                    "appleMusic": "https://music.apple.com/mx/album/lets-be-birds/1440649670?i=1440649674",
+                    "spotify": "https://open.spotify.com/intl-es/track/0JaFXX2YBvJSX49eYhz35J?si=09842fb02dca4d7c",
+                    "youtube": "https://youtu.be/FlL_UAjg6yk?si=vd7a8-Pa70Zf-tcH"
                 }
             },
             {
@@ -142,7 +142,7 @@
                     "name": "Fuerza Ancestral",
                     "image": "https://i.scdn.co/image/ab67616d0000b273efed87ee2e83a0d7004abe30"
                 },
-                "description": "Remi is a song by Reyno from the album Fuerza Ancestral. It was released on September 25, 2022.",
+                "description": "Esta es una canción típica de amor y arrepentimiento, que refleja un poco cómo me sentía cuando sentía que te perdía.",
                 "links": {
                     "appleMusic": "https://music.apple.com/mx/album/remi/1436092734?i=1436092739",
                     "spotify": "https://open.spotify.com/intl-es/track/1lfnDo6kfOjXg5yW92NJ3S?si=74ca634eb5d447ce",
@@ -158,7 +158,7 @@
                     "name": "Chapters (Deluxe)",
                     "image": "https://i.scdn.co/image/ab67616d0000b27343af1e35eb5caee319858e51"
                 },
-                "description": "Crush is a song by Yuna and Usher from the album Crush. It was released on September 25, 2022.",
+                "description": "Esta canción me encanta porque me recuerda a esos primeros días en los que te vuelves loco por una persona, cuando tu mundo cambia por completo.",
                 "links": {
                     "appleMusic": "https://music.apple.com/mx/album/crush-feat-usher/1440842183?i=1440842581",
                     "spotify": "https://open.spotify.com/intl-es/track/3Txcx4jhuiTZSvhAL0WaRc?si=d9e31adeb01e4e94",
@@ -174,7 +174,7 @@
                     "name": "No digas nada",
                     "image": "https://i.scdn.co/image/ab67616d0000b273508432681fdcfcbd0a758622"
                 },
-                "description": "No digas nada is a song by LATIN MAFIA from the album No digas nada. It was released on September 25, 2022.",
+                "description": "Es uno de tus artistas favoritos, y recuerdo que esta canción me la recomendaste en una ocasión. Incluso le hice un sticker al personaje de la imagen.",
                 "links": {
                     "appleMusic": "https://music.apple.com/mx/album/no-digas-nada/1752784613?i=1752784617",
                     "spotify": "https://open.spotify.com/intl-es/track/4wtWL0UV8tCPv9VbUMLXYP?si=884cb950ed5648f7",
@@ -183,50 +183,66 @@
             },
             {
                 "id": "10-song-013442120sdkjr",
-                "name": "I Don't Wanna Live Forever (Fifty Shades Darker)",
-                "artists": ["ZAYN", "Taylor Swift"],
-                "duration": "4:06",
+                "name": "Fortnight (feat. Post Malone)",
+                "artists": ["Taylor Swift", "Post Malone"],
+                "duration": "3:49",
                 "album":{
-                    "name": "Fifty Shades Darker (Original Motion Picture Soundtrack)",
-                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP0v0dTws14ybOH-szKgbLKVtaF0AzbDFPaq24F5kYXsNsOEJPdwKtwTw&s=10"
+                    "name": "Fortnight",
+                    "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
                 },
-                "description": "I Don't Wanna Live Forever (Fifty Shades Darker) is a song by ZAYN and Taylor Swift from the album Fifty Shades Darker (Original Motion Picture Soundtrack). It was released on September 25, 2022.",
+                "description": "Tenía que poner algo de Taylor en esta colección, y justo esta rola me recuerda a ti. Un poco, de manera metafórica, refleja lo que vivimos al inicio. ¿No crees?",
                 "links": {
-                    "appleMusic": "https://music.apple.com/mx/album/i-dont-wanna-live-forever-fifty-shades-darker/1440880777?i=1440880860",
-                    "spotify": "https://open.spotify.com/intl-es/track/2y5aJvzXhHPA94U5GFAcXe?si=493ea504b6474bcb",
-                    "youtube": "https://youtu.be/AY9blLYMKnI?si=YnCw2sH0chpd6Sdq"
+                    "appleMusic": "https://music.apple.com/mx/album/fortnight-feat-post-malone/1742073690?i=1742074018",
+                    "spotify": "https://open.spotify.com/intl-es/track/6dODwocEuGzHAavXqTbwHv?si=1376baf2f9464704",
+                    "youtube": "https://youtu.be/q3zqJs7JUCQ?si=aZUm3ywQgZ4xvx1j"
                 }
             },
             {
                 "id": "11-song-013442120sdkjr",
-                "name": "We Still Love",
-                "artists": ["Olly Murs"],
-                "duration": "3:16",
+                "name": "Serpentine",
+                "artists": ["Renforshort"],
+                "duration": "3:00",
                 "album":{
-                    "name": "Never Been Better (Expanded Edition)",
-                    "image": "https://i.scdn.co/image/ab67616d0000b27375481dc0eda56dac215eab5a"
+                    "name": "Clean hands dirty water",
+                    "image": "https://i.scdn.co/image/ab67616d00001e02dc3d550104e211597cccccbd"
                 },
-                "description": "We Still Love is a song by Olly Murs from the album Never Been Better (Expanded Edition). It was released on September 25, 2022.",
+                "description": "Ren es mi artista mujer favorita, y esta canción la coloco porque me recuerda que a veces el tiempo a solas es bueno para uno mismo. Aunque, claro, salir contigo me encanta.",
                 "links": {
-                    "appleMusic": "https://music.apple.com/mx/album/we-still-love/1520414682?i=1520415278",
-                    "spotify": "https://open.spotify.com/intl-es/track/1onQQgHzXknNBxKgZhJydP?si=b1123a97de944c33",
-                    "youtube": "https://youtu.be/jskzxUcWz68?si=u2Pftqev9gJXb124"
+                    "appleMusic": "https://music.apple.com/mx/album/serpentine/1742104901?i=1742105150",
+                    "spotify": "https://open.spotify.com/intl-es/track/1qbfQw8V8pRnj8kKVmRbmQ?si=d1ff088ac2974d88",
+                    "youtube": "https://youtu.be/Z63W6jg3d1o?si=kdjK86i149OaegoZ"
                 }
             },
             {
-                "id": "12-song-013442120sdkjr",
-                "name": "Tenderly",
-                "artists": ["Nat & Alex Wolff"],
-                "duration": "3:49",
+                "id": "11-song-01344214520sdkjr",
+                "name": "Romantic",
+                "artists": ["Stanaj"],
+                "duration": "3:42",
                 "album":{
-                    "name": "Public Places",
-                    "image": "https://i.scdn.co/image/ab67616d0000b27394931fc322b5aefe894cea96"
+                    "name": "The Preview (EP)",
+                    "image": "https://i.scdn.co/image/ab67616d0000b273df2596b7c0101a88aec28f2c"
                 },
-                "description": "Tenderly is a song by Nat & Alex Wolff from the album Public Places. It was released on September 25, 2022.",
+                "description": "Esta canción la siento muy personal, pues yo no me considero una persona romántica, pero cuando estoy contigo, haces que poco a poco saque esa faceta de mí. Y, la verdad, me gusta.",
                 "links": {
-                    "appleMusic": "https://music.apple.com/mx/album/tenderly/1178728230?i=1178728389",
-                    "spotify": "https://open.spotify.com/intl-es/track/0nSg8ZgfOrBOKfKHvHwz6Z?si=0cba4a8fba534cf4",
-                    "youtube": "https://youtu.be/rf36vXB21Ys?si=ZTuIn8wb15ay5HfR"
+                    "appleMusic": "https://music.apple.com/mx/album/romantic/1443231823?i=1443232007",
+                    "spotify": "https://open.spotify.com/intl-es/track/3iMwZf2P45fKtygP2fa55c?si=54b52138683a4dd6",
+                    "youtube": "https://youtu.be/UjJx_o1nevE?si=TPRO0fypU_kcnLl5"
+                }
+            },
+            {
+                "id": "16-song-01346214522sdkjr",
+                "name": "Desencuentro (feat. Soko)",
+                "artists": ["Residente", "Soko"],
+                "duration": "4:44",
+                "album":{
+                    "name": "Residente",
+                    "image": "https://i.scdn.co/image/ab67616d0000b2738c32bf008fb343633d07f23a"
+                },
+                "description": "Esta canción describe mejor nuestra relación a lo largo de estos años: dos personas cuyos caminos, por una u otra circunstancia, no terminaban de cruzarse y que simplemente no lograban coincidir.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/desencuentro-feat-soko/1214464925?i=1214465181",
+                    "spotify": "https://open.spotify.com/intl-es/track/0kc4G5tEdtmTB0w3gYmb01?si=21c09029532b4091",
+                    "youtube": "https://youtu.be/5xGqUompVVQ?si=Gsd_9DJMyBFwQuzX"
                 }
             },
             {
@@ -238,11 +254,27 @@
                     "name": "you were good to me",
                     "image": "https://cdn-images.dzcdn.net/images/cover/e74dfa6886e4ed7d247850564eb28337/1900x1900-000000-80-0-0.jpg"
                 },
-                "description": "Only Love Song is a song by Chloe Lilac from the album you were good to me. It was released on September 25, 2022.",
+                "description": "Esta es la canción más cursi de amor que te van a dedicar, y justo esta colección musical la diseñé para ti.",
                 "links": {
                     "appleMusic": "https://music.apple.com/mx/album/only-love-song/1618832958?i=1618832962",
                     "spotify": "https://open.spotify.com/intl-es/track/0IWZdk1sIFtLPvM1wNiZMZ?si=210946a53b37475c",
                     "youtube": "https://youtu.be/YOSm9b6BuXw?si=TE9VbiHlylRBuk8p"
+                }
+            },
+            {
+                "id": "12-song-013442120sdkjr",
+                "name": "La célula No Explotó",
+                "artists": ["José Madero"],
+                "duration": "2:49",
+                "album":{
+                    "name": "Alba",
+                    "image": "https://i.scdn.co/image/ab67616d0000b2732ad8a8dd90be2d65ec430b64"
+                },
+                "description": "Esta canción me trae mucha nostalgia del lejano 2018, y es romántica porque la letra es literalmente lo que siento expresado con palabras.",
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/la-c%C3%A9lula-no-explot%C3%B3/1355950555?i=1355951312",
+                    "spotify": "https://open.spotify.com/intl-es/track/1vIdbufv3iGglHhOyWDPn3?si=ea0bdd86ceb643b4",
+                    "youtube": "https://youtu.be/xPE6qEl5RHs?si=BhEOL6NsZKAQO66J"
                 }
             },
             {
@@ -254,7 +286,7 @@
                     "name": "Cara o cruz, pt. 1",
                     "image": "https://cdn-images.dzcdn.net/images/cover/175340f57f943e88daba9f1fa7875d69/0x1900-000000-80-0-0.jpg"
                 },
-                "description": "Mi Corazón (feat. MC Davo) is a song by Arsenal de rimas and MC Davo from the album Mi Corazón (feat. MC Davo). It was released on September 25, 2022.",
+                "description": "Yo nunca comparto mi música; para mí, lo que escucho es muy personal. El hecho de que te muestre esto es una prueba de que realmente importas en mi vida. Y quiero cerrar con esta canción, que me lleva al 2016, hace 10 años, y hoy te la dedico.",
                 "links": {
                     "appleMusic": "https://music.apple.com/mx/album/mi-coraz%C3%B3n-feat-mc-davo/1018276937?i=1018277419",
                     "spotify": "https://open.spotify.com/intl-es/track/1t9cFXkrMn9ZMKhQO7AWpq?si=e00dc1c6b6ab46b2",
@@ -270,7 +302,7 @@
         "updatedAt": "2026-09-25T12:00:00.000Z",
         "userId": "user-1",
         "image": "collections/olvidaste-tus-flotadores.jpeg",
-        "description": "this music collection is a compilation of my favorite songs from the 90s and 2000s.",
+        "description": "Una colección de música que narra la historia del hombre cangrejo, quien se ahogó en el mar de la melancolía y la tristeza. Y, evidentemente, olvidó sus flotadores.",
         "user": {
             "id": "user-1",
             "name": "Eduardo Martínez",
@@ -282,7 +314,7 @@
         "status": "active",
         "playlistLinks": {
             "appleMusic": "https://music.apple.com/mx/playlist/olvidaste-tus-flotadores/pl.u-GgA590mUx4PAymD",
-            "spotify": "https://open.spotify.com/playlist/5GBKWlUTdnPb5Kp7OEO31n?si=47c789de7697406b"
+            "spotify": "https://open.spotify.com/playlist/6KsUk6eqNYz7EXqccBTu5d?si=8dbddba5021e4328"
         },
         "settings": {
             "showSongsDescription": true,
@@ -297,9 +329,58 @@
             },
             "borderColor": "#23E4E4",
             "separatorBarColor": "#849793",
-            "descriptionCardColor": "#BDE7E080",
+            "descriptionCardColor": "#86b9b780",
             "descriptionCardBorderColor": "#23E4E4"
         },
-        "songs": []
+        "songs": [
+            {
+                "id": "01-song-013442120sdkjr3",
+                "name": "Fall Away",
+                "artists": ["Lund"],
+                "duration": "3:48",
+                "description": "En Proceso....",
+                "album": {
+                    "name": "Fall Away",
+                    "image": "https://i.scdn.co/image/ab67616d0000b27313431dd0711c8ea893be8979"
+                },
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/fall-away/1358452256?i=1358452907",
+                    "spotify": "https://open.spotify.com/intl-es/track/4h5sin0ACS7b5MkZsMRmWS?si=3ddf904c843b4e31",
+                    "youtube": "https://youtu.be/HXpzFL8NB88?si=aMVdHbucdik57cXb"
+                }
+            },
+            {
+                "id": "02-song-013442120sdkjr3",
+                "name": "paris has made me a man",
+                "artists": ["Renforshort"],
+                "duration": "3:40",
+                "description": "En Proceso....",
+                "album": {
+                    "name": "Clean hands dirty water",
+                    "image": "https://i.scdn.co/image/ab67616d00001e02dc3d550104e211597cccccbd"
+                },
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/paris-has-made-me-a-man/1742104901?i=1742105413",
+                    "spotify": "https://open.spotify.com/intl-es/track/6QB7SxDa5ziBn10p6kDTV1",
+                    "youtube": "https://youtu.be/SBMFEowtico?si=kHm9THl5z3j0dawg"
+                }
+            },
+            {
+                "id": "03-song-013442120sdkjr3",
+                "name": "Rollin' Around",
+                "artists": ["Nat & Alex Wolff"],
+                "duration": "3:37",
+                "description": "En Proceso....",
+                "album": {
+                    "name": "Public Places",
+                    "image": "https://i.scdn.co/image/ab67616d0000b27394931fc322b5aefe894cea96"
+                },
+                "links": {
+                    "appleMusic": "https://music.apple.com/mx/album/rollin-around/1178728230?i=1178728390",
+                    "spotify": "https://open.spotify.com/intl-es/track/7vqEcDc2C51DK890XZCwZC?si=3439d695e5474654",
+                    "youtube": "https://youtu.be/WkAuFCw_SkE?si=L_rDfsnVU00kfNrh"
+                }
+            }
+        ]
     }
 ]

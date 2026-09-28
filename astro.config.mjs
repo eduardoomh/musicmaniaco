@@ -13,6 +13,7 @@ export default defineConfig({
 			// Túneles (Pinggy, ngrok, etc.): subdominios *.free.pinggy.net
 			allowedHosts: [
 				'bifnv-2806-2f0-4680-fbbc-e467-2d18-bcc7-6585.free.pinggy.net',
+				"apijp-2806-2f0-4680-fbbc-e467-2d18-bcc7-6585.run.pinggy-free.link",
 				'.free.pinggy.net',
 				'.pinggy.net',
 			],
