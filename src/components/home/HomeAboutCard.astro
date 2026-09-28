@@ -3,25 +3,90 @@ import CardDescription from '../CardDescription.astro';
 import CardImage from '../CardImage.astro';
 import CollectionBadge from '../CollectionBadge.astro';
 import CollectionTitle from '../CollectionTitle.astro';
-import eduardoomh from '../../assets/collections/eduardoomh.jpeg';
+import UserCreatorLink from '../UserCreatorLink.astro';
+import { findHomeDemoCollection, resolveAssetImage } from '../../data';
+
+const collection = findHomeDemoCollection();
+const cover = resolveAssetImage(collection.image);
+const coverSrc = typeof cover === 'string' ? cover : cover.src;
+const avatar = resolveAssetImage(collection.user.avatar);
+const avatarSrc = typeof avatar === 'string' ? avatar : avatar.src;
+
+const descriptionCardColor = collection.settings.descriptionCardColor ?? '#47776f';
+const descriptionCardBorderColor =
+	collection.settings.descriptionCardBorderColor ?? collection.settings.borderColor ?? '#39ff68';
+
+const created = new Date(collection.createdAt);
+const day = created.getUTCDate();
+const month = created.toLocaleDateString('es-MX', { month: 'long', timeZone: 'UTC' });
+const monthLabel = month.charAt(0).toUpperCase() + month.slice(1);
+const year = created.getUTCFullYear();
+const createdLabel = `${day} de ${monthLabel} del ${year}`;
 ---
 
 <div class="about">
 	<div class="about__card">
-		<CardImage src={eduardoomh.src} alt="John's Party Music" />
+		<CardImage src={coverSrc} alt={collection.name} />
 		<CollectionBadge />
-		<p class="about__card-secondary-text">15 canciones</p>
-		<CollectionTitle as="h2" title="John's Party Music" fontSize={24} />
-		<p class="about__card-secondary-text">22 de Agosto del 2026</p>
+		<p class="about__card-secondary-text">
+			{collection.songs.length} canciones
+		</p>
+		<CollectionTitle as="h2" title={collection.name} fontSize={24} mobileFontSize={20} />
+		<p class="about__card-secondary-text">{createdLabel}</p>
+		<UserCreatorLink username={collection.user.username} avatarSrc={avatarSrc} />
 		<hr class="about__card-hr" />
-		<CardDescription text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos." />
+		<div class="about__full">
+			<CardDescription text={collection.description} borderColor={descriptionCardBorderColor} />
+		</div>
+		<section class="about__full about__songs-section">
+			<h3 class="about__songs-heading">Canciones</h3>
+			<ol class="about__songs">
+				{
+					collection.songs.map((song, index) => (
+						<li class="about__song">
+							<div class="about__song-row">
+								<span class="about__song-index">{index + 1}</span>
+								<img
+									class="about__song-cover"
+									src={song.album.image}
+									alt=""
+									width={40}
+									height={40}
+									loading="lazy"
+									decoding="async"
+								/>
+								<div class="about__song-info">
+									<strong>{song.name}</strong>
+									<span>{song.artists.join(', ')}</span>
+								</div>
+							</div>
+							{song.description && (
+								<CardDescription
+									text={song.description}
+									fontSize={12}
+									backgroundColor={descriptionCardColor}
+									borderColor={descriptionCardBorderColor}
+								/>
+							)}
+						</li>
+					))
+				}
+			</ol>
+		</section>
 	</div>
 </div>
 
 <style>
 	.about {
+		display: flex;
+		flex-direction: column;
 		width: 400px;
+		max-width: 100%;
+		height: 100%;
+		min-height: 0;
 		background-color: #12483a;
+		overflow: hidden;
+		border-radius: 12px;
 	}
 
 	.about__card {
@@ -30,26 +95,139 @@ import eduardoomh from '../../assets/collections/eduardoomh.jpeg';
 		align-items: center;
 		justify-content: flex-start;
 		gap: 12px;
-		margin-top: 24px;
-		padding: 0 40px;
+		border-radius: 12px;
+		flex: 1;
+		min-height: 0;
+		min-width: 0;
+		margin: 0;
+		padding: 24px 40px 28px;
+		box-sizing: border-box;
+		overflow-x: hidden;
+		overflow-y: auto;
+		overscroll-behavior-y: contain;
+		-webkit-overflow-scrolling: touch;
 	}
+
+	.about__card::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	.about__card::-webkit-scrollbar-thumb {
+		background-color: rgba(246, 240, 227, 0.35);
+		border-radius: 999px;
+	}
+
+	.about__full {
+		align-self: stretch;
+		width: 100%;
+		min-width: 0;
+	}
+
+	.about__card :global(.collection-badge) {
+		align-self: center;
+	}
+
+	.about__card :global(.user-creator-link) {
+		font-size: 12px;
+		color: #a4a4a4;
+		opacity: 1;
+	}
+
 	.about__card-secondary-text {
 		font-size: 12px;
 		padding: 0;
 		margin: 0;
-		color: #A4A4A4;
+		color: #a4a4a4;
 	}
+
 	.about__card-hr {
 		width: 100%;
 		height: 0.5px;
-		background-color: #ABA8A8;
+		background-color: #aba8a8;
 		margin: 0;
+	}
+
+	.about__songs-section {
+		margin-top: 20px;
+	}
+
+	.about__songs-heading {
+		margin: 0 0 12px;
+		font-size: 16px;
+		font-weight: 700;
+		color: #f6f0e3;
+		text-align: left;
+	}
+
+	.about__songs {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.about__song {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.about__song-row {
+		display: grid;
+		grid-template-columns: 20px 40px 1fr;
+		align-items: center;
+		gap: 10px;
+		text-align: left;
+	}
+
+	.about__song-index {
+		font-size: 12px;
+		color: #a4a4a4;
+		text-align: center;
+	}
+
+	.about__song-cover {
+		width: 40px;
+		height: 40px;
+		border-radius: 6px;
+		object-fit: cover;
+	}
+
+	.about__song-info {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		min-width: 0;
+	}
+
+	.about__song-info strong {
+		font-size: 13px;
+		font-weight: 600;
+		color: #f6f0e3;
+		line-height: 1.25;
+	}
+
+	.about__song-info span {
+		font-size: 11px;
+		color: #a4a4a4;
+		line-height: 1.3;
 	}
 
 	@media (max-width: 768px) {
 		.about {
+			height: auto;
+			max-height: min(520px, 62vh);
 			border-radius: 12px;
-			padding-bottom: 24px;
+		}
+
+		.about__card {
+			padding-inline: 20px;
+		}
+
+		.about__card :global(.user-creator-link) {
+			align-self: center;
 		}
 	}
 </style>

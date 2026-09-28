@@ -23,7 +23,14 @@ const {
 			<img src={logo.src} width={logo.width} height={logo.height} alt="Musicmaniaco" />
 			<p>Una herramienta para coleccionistas, productores y amantes de la música que quieren documentar, ordenar y compartir su música con claridad.</p>
 			<div class="footer__content_left_social">
-				<img src={instagram.src} width={28} height={28} alt="Instagram" />
+				<a
+					href="https://www.instagram.com/music.maniaco"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Instagram de Musicmaniaco"
+				>
+					<img src={instagram.src} width={28} height={28} alt="" />
+				</a>
 				<img src={youtube.src} width={28} height={28} alt="YouTube" />
 				<img src={circleX.src} width={circleX.width} height={circleX.height} alt="Circle X" />
 			</div>
@@ -142,6 +149,11 @@ const {
 		display: flex;
 		align-items: center;
 		gap: 6px;
+	}
+
+	.footer__content_left_social a {
+		display: inline-flex;
+		line-height: 0;
 	}
 
 	.footer__copyright {

@@ -6,6 +6,8 @@ export { default as CopyOutlined } from '@ant-design/icons-svg/es/asn/CopyOutlin
 export { default as DownloadOutlined } from '@ant-design/icons-svg/es/asn/DownloadOutlined';
 export { default as EyeInvisibleOutlined } from '@ant-design/icons-svg/es/asn/EyeInvisibleOutlined';
 export { default as EyeOutlined } from '@ant-design/icons-svg/es/asn/EyeOutlined';
+export { default as FolderOpenOutlined } from '@ant-design/icons-svg/es/asn/FolderOpenOutlined';
+export { default as LinkOutlined } from '@ant-design/icons-svg/es/asn/LinkOutlined';
 export { default as MenuOutlined } from '@ant-design/icons-svg/es/asn/MenuOutlined';
 export { default as ShareAltOutlined } from '@ant-design/icons-svg/es/asn/ShareAltOutlined';
 export { default as UserOutlined } from '@ant-design/icons-svg/es/asn/UserOutlined';

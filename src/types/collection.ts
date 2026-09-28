@@ -37,7 +37,7 @@ export interface Collection {
 		descriptionCardColor?: string;
 		descriptionCardBorderColor?: string;
 	};
-	links?: {
+	playlistLinks?: {
 		appleMusic?: string;
 		spotify?: string;
 	};

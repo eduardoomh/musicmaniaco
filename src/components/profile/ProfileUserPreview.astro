@@ -1,0 +1,111 @@
+---
+import CardDescription from '../CardDescription.astro';
+import CollectionBadge from '../CollectionBadge.astro';
+import CollectionTitle from '../CollectionTitle.astro';
+import { UserOutlined } from '../icons/outlined';
+import type { Profile } from '../../types/profile';
+
+interface Props {
+	profile: Profile;
+	avatarSrc: string;
+	titleFontSize?: number;
+	centered?: boolean;
+}
+
+const {
+	profile,
+	avatarSrc,
+	titleFontSize = 36,
+	centered = false,
+} = Astro.props;
+
+const borderColor = profile.settings.borderColor ?? '#f6f0e3';
+const descriptionCardColor = profile.settings.descriptionCardColor ?? '#47776f';
+const descriptionCardBorderColor =
+	profile.settings.descriptionCardBorderColor ?? borderColor;
+---
+
+<div class:list={['profile-user-preview', centered && 'profile-user-preview--centered']}>
+	<img
+		class="profile-user-preview__avatar"
+		src={avatarSrc}
+		alt=""
+		width={192}
+		height={192}
+		loading="lazy"
+		decoding="async"
+	/>
+	<div class="profile-user-preview__meta">
+		<CollectionBadge label="Perfil" icon={UserOutlined} />
+		<CollectionTitle title={profile.name} fontSize={titleFontSize} />
+		<p class="profile-user-preview__username">{profile.username}</p>
+		<CardDescription
+			text={profile.bio}
+			fontSize={14}
+			backgroundColor={descriptionCardColor}
+			borderColor={descriptionCardBorderColor}
+		/>
+	</div>
+</div>
+
+<style>
+	.profile-user-preview {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		gap: 32px;
+	}
+
+	.profile-user-preview__avatar {
+		width: 192px;
+		height: 192px;
+		border-radius: 50%;
+		object-fit: cover;
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+		flex-shrink: 0;
+	}
+
+	.profile-user-preview__meta {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 12px;
+		flex: 1;
+		min-width: 260px;
+	}
+
+	.profile-user-preview__meta :global(.collection-title) {
+		margin: 0;
+	}
+
+	.profile-user-preview__username {
+		margin: 0;
+		font-size: 14px;
+		opacity: 0.85;
+		color: #f6f0e3;
+	}
+
+	.profile-user-preview--centered {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	.profile-user-preview--centered .profile-user-preview__meta {
+		align-items: center;
+		min-width: 0;
+		width: 100%;
+	}
+
+	@media (max-width: 768px) {
+		.profile-user-preview:not(.profile-user-preview--centered) {
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+
+		.profile-user-preview:not(.profile-user-preview--centered) .profile-user-preview__meta {
+			align-items: center;
+		}
+	}
+</style>

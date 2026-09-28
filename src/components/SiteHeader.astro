@@ -32,7 +32,12 @@ const {
 	</nav>
 
 	<div class="site-header__actions">
-		<a href="https://instagram.com" aria-label="Instagram">
+		<a
+			href="https://www.instagram.com/music.maniaco"
+			target="_blank"
+			rel="noopener noreferrer"
+			aria-label="Instagram de Musicmaniaco"
+		>
 			<img src={instagramIcon.src} width={36} height={36} alt="" />
 		</a>
 		<button
@@ -73,18 +78,23 @@ const {
 
 <style define:vars={{ gradientStart, gradientEnd, gradientEndAt: `${gradientEndAt}%` }}>
 	.site-header {
+		box-sizing: border-box;
+		position: sticky;
+		top: 0;
+		z-index: 100;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 1rem;
+		/* Safari iOS 26+: extiende el tinte desde sticky; sin background-color plano */
 		background: linear-gradient(
 			90deg,
 			var(--gradientStart) 0%,
 			var(--gradientEnd) var(--gradientEndAt)
 		);
 		color: #f6f0e3;
-		padding: 0 24px;
-		min-height: 74px;
+		padding: env(safe-area-inset-top, 0px) 24px 0;
+		min-height: calc(74px + env(safe-area-inset-top, 0px));
 	}
 
 	.site-header__logo {
@@ -155,12 +165,10 @@ const {
 
 	@media (max-width: 768px) {
 		.site-header {
-			position: relative;
 			flex-wrap: nowrap;
-			height: 74px;
-			min-height: 74px;
-			padding: 0 16px;
-			z-index: 100;
+			height: auto;
+			min-height: calc(74px + env(safe-area-inset-top, 0px));
+			padding: env(safe-area-inset-top, 0px) 16px 0;
 		}
 
 		.site-header__logo {

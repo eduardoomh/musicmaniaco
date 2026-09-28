@@ -1,21 +1,32 @@
 ---
-import logo from '../../assets/music.maniaco-full-logo.svg';
+import AntIcon from '../icons/AntIcon.astro';
+import { FolderOpenOutlined, LinkOutlined } from '../icons/outlined';
 ---
 
 <div class="hero-left">
-	<img
-		src={logo.src}
-		alt="Musicmaniaco Full Logo"
-		width={256}
-		class="hero-left__logo"
-	/>
-	<hr class="hero-left__divider" />
+	<hr class="hero-left__divider hero-left__divider--top" />
 	<h1>Crea colecciones. <br /> documenta tu música. <br />Comparte.</h1>
-	<p>
-		Crea un perfil, crea colecciones de música de cualquier temática, guardarlas,
-		compartirlas y deja que la música hable por tí.
-	</p>
-	<span class="hero-left__coming-soon">Proximamente.</span>
+
+	<div class="hero-left__cards">
+		<article class="hero-left__card">
+			<div class="hero-left__card-icon" aria-hidden="true">
+				<AntIcon icon={FolderOpenOutlined} size={22} />
+			</div>
+			<p>
+				Crea un perfil, crea colecciones de música de cualquier temática, guárdalas,
+				compártelas y deja que la música hable por ti.
+			</p>
+		</article>
+		<article class="hero-left__card">
+			<div class="hero-left__card-icon" aria-hidden="true">
+				<AntIcon icon={LinkOutlined} size={22} />
+			</div>
+			<p>
+				Tus colecciones son agnósticas a cualquier servicio de streaming: crea una
+				colección y enlázala con una playlist que ya tengas.
+			</p>
+		</article>
+	</div>
 	<hr class="hero-left__divider" />
 </div>
 
@@ -29,15 +40,48 @@ import logo from '../../assets/music.maniaco-full-logo.svg';
 	}
 
 	.hero-left h1 {
+		margin: 0 0 20px;
 		font-size: 44px;
 		font-weight: 800;
 		color: #124232;
+		line-height: 1.15;
 	}
 
-	.hero-left p {
-		font-size: 16px;
+	.hero-left__cards {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		margin-bottom: 20px;
+	}
+
+	.hero-left__card {
+		display: flex;
+		align-items: flex-start;
+		gap: 14px;
+		margin: 0;
+		padding: 14px 16px;
+		border-radius: 12px;
+		background-color: #077256;
+	}
+
+	.hero-left__card-icon {
+		display: flex;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		width: 42px;
+		height: 42px;
+		border-radius: 10px;
+		background-color: #07291e;
+		color: #39ff68;
+	}
+
+	.hero-left__card p {
+		margin: 0;
+		font-size: 15px;
 		font-weight: 500;
-		color: #07291e;
+		line-height: 1.5;
+		color: #f6f0e3;
 	}
 
 	.hero-left__coming-soon {
@@ -51,20 +95,34 @@ import logo from '../../assets/music.maniaco-full-logo.svg';
 		height: 1px;
 		background-color: #07291e;
 		border: none;
-		margin-top: 24px;
+		margin: 24px 0 0;
+	}
+
+	.hero-left__divider--top {
+		margin: 0 0 24px;
 	}
 
 	@media (min-width: 769px) and (max-width: 1100px) {
-		.hero-left h1  {
+		.hero-left h1 {
 			font-size: 36px;
 		}
 	}
+
 	@media (max-width: 768px) {
 		.hero-left {
 			width: 100%;
 		}
-		.hero-left h1  {
+
+		.hero-left h1 {
 			font-size: 36px;
+		}
+
+		.hero-left__card {
+			padding: 12px 14px;
+		}
+
+		.hero-left__card p {
+			font-size: 14px;
 		}
 	}
 </style>

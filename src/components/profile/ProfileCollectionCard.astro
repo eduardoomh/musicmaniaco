@@ -19,7 +19,7 @@ const href = `/${username}/${slug}`;
 <a class="profile-collection-card" href={href} style={`--card-border-color: ${borderColor}`}>
 	<CardImage src={coverSrc} alt={collection.name} />
 	<div class="profile-collection-card__meta">
-		<CollectionTitle as="h2" title={collection.name} fontSize={24} />
+		<CollectionTitle as="h2" title={collection.name} fontSize={24} mobileFontSize={18} />
 		<p class="profile-collection-card__count">{collection.songs.length} canciones</p>
 	</div>
 </a>
@@ -66,6 +66,27 @@ const href = `/${username}/${slug}`;
 		margin: 0;
 		font-size: 14px;
 		opacity: 0.85;
+	}
+
+	@media (max-width: 768px) {
+		.profile-collection-card {
+			gap: 16px;
+			padding: 12px;
+		}
+
+		.profile-collection-card :global(.card-image) {
+			width: 128px;
+			height: 128px;
+		}
+
+		.profile-collection-card__meta {
+			min-width: 0;
+			gap: 6px;
+		}
+
+		.profile-collection-card__count {
+			font-size: 12px;
+		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {

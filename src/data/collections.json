@@ -16,6 +16,10 @@
             "bio": "I'm a software engineer and music producer."
         },
         "status": "active",
+        "playlistLinks": {
+            "appleMusic": "https://music.apple.com/mx/playlist/lorys-version-vol-1/pl.u-NpXm6BpFLoGAb9N",
+            "spotify": "https://open.spotify.com/playlist/1K8KYQ4fXi8UhQuva8t9n8?si=48bfd57c0f7c48f5"
+        },
         "settings": {
             "showSongsDescription": true,
             "backgroundType": "gradient",
@@ -276,6 +280,10 @@
             "bio": "I'm a software engineer and music producer."
         },
         "status": "active",
+        "playlistLinks": {
+            "appleMusic": "https://music.apple.com/mx/playlist/olvidaste-tus-flotadores/pl.u-GgA590mUx4PAymD",
+            "spotify": "https://open.spotify.com/playlist/5GBKWlUTdnPb5Kp7OEO31n?si=47c789de7697406b"
+        },
         "settings": {
             "showSongsDescription": true,
             "backgroundType": "gradient",

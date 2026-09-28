@@ -1,9 +1,6 @@
 ---
-import CardDescription from '../CardDescription.astro';
-import CollectionBadge from '../CollectionBadge.astro';
-import CollectionTitle from '../CollectionTitle.astro';
-import { UserOutlined } from '../icons/outlined';
 import ProfileCollectionCard from './ProfileCollectionCard.astro';
+import ProfileUserPreview from './ProfileUserPreview.astro';
 import { resolveAssetImage } from '../../data';
 import type { Collection } from '../../types/collection';
 import type { Profile } from '../../types/profile';
@@ -18,9 +15,6 @@ interface Props {
 const { profile, collections, pageGradient, avatarSrc } = Astro.props;
 
 const borderColor = profile.settings.borderColor ?? '#f6f0e3';
-const descriptionCardColor = profile.settings.descriptionCardColor ?? '#47776f';
-const descriptionCardBorderColor =
-	profile.settings.descriptionCardBorderColor ?? borderColor;
 
 const collectionCards = collections.map((collection) => {
 	const cover = resolveAssetImage(collection.image);
@@ -31,28 +25,7 @@ const collectionCards = collections.map((collection) => {
 
 <section class="profile-page" style={`--page-gradient: ${pageGradient}`}>
 	<div class="profile-page__header">
-		<div class="profile-page__hero">
-			<img
-				class="profile-page__avatar"
-				src={avatarSrc}
-				alt=""
-				width={192}
-				height={192}
-				loading="eager"
-				decoding="async"
-			/>
-			<div class="profile-page__meta">
-				<CollectionBadge label="Perfil" icon={UserOutlined} />
-				<CollectionTitle title={profile.name} fontSize={36} />
-				<p class="profile-page__username">{profile.username}</p>
-				<CardDescription
-					text={profile.bio}
-					fontSize={14}
-					backgroundColor={descriptionCardColor}
-					borderColor={descriptionCardBorderColor}
-				/>
-			</div>
-		</div>
+		<ProfileUserPreview profile={profile} avatarSrc={avatarSrc} />
 	</div>
 
 	<div class="profile-page__collections-wrap">
@@ -91,40 +64,6 @@ const collectionCards = collections.map((collection) => {
 		margin: 0 auto 40px;
 	}
 
-	.profile-page__hero {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-start;
-		gap: 32px;
-	}
-
-	.profile-page__avatar {
-		width: 192px;
-		height: 192px;
-		border-radius: 50%;
-		object-fit: cover;
-		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-		flex-shrink: 0;
-	}
-
-	.profile-page__meta {
-		display: flex;
-		flex-direction: column;
-		gap: 12px;
-		flex: 1;
-		min-width: 260px;
-	}
-
-	.profile-page__meta :global(.collection-title) {
-		margin: 0;
-	}
-
-	.profile-page__username {
-		margin: 0;
-		font-size: 14px;
-		opacity: 0.85;
-	}
-
 	.profile-page__collections-wrap {
 		max-width: 960px;
 		margin: 0 auto;
@@ -155,16 +94,6 @@ const collectionCards = collections.map((collection) => {
 	@media (max-width: 768px) {
 		.profile-page {
 			padding: 24px 16px 48px;
-		}
-
-		.profile-page__hero {
-			flex-direction: column;
-			align-items: center;
-			text-align: center;
-		}
-
-		.profile-page__meta :global(.collection-badge) {
-			align-self: center;
 		}
 	}
 </style>

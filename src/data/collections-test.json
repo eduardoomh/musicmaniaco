@@ -1,0 +1,110 @@
+[
+	{
+		"id": "demo-johns-party-001",
+		"name": "John's Party Music",
+		"createdAt": "2026-08-22T18:00:00.000Z",
+		"updatedAt": "2026-08-22T18:00:00.000Z",
+		"image": "collections/johns-party.jpeg",
+		"description": "La fiesta de John fue un éxito: recopilamos las canciones que mejor describen el momento, desde el primer brindis hasta el último baile en la cocina.",
+		"user": {
+			"username": "eduardoomh",
+			"name": "Eduardo Martínez",
+			"avatar": "/collections/eduardoomh.jpeg",
+			"bio": "Ingeniero de software y amante de la música."
+		},
+		"playlistLinks": {
+			"spotify": "https://open.spotify.com/playlist/37i9dQZF1DXaXB8fQg7xif"
+		},
+		"settings": {
+			"showSongsDescription": true,
+			"gradient": {
+				"angle": 135,
+				"stops": [
+					{ "color": "#105941", "at": 0 },
+					{ "color": "#12483a", "at": 55 },
+					{ "color": "#07291e", "at": 100 }
+				]
+			},
+			"borderColor": "#39ff68",
+			"descriptionCardColor": "#47776f",
+			"descriptionCardBorderColor": "#39ff68"
+		},
+		"songs": [
+			{
+				"id": "demo-johns-party-song-1",
+				"name": "Uptown Funk",
+				"artists": ["Mark Ronson", "Bruno Mars"],
+				"duration": "4:30",
+				"album": {
+					"name": "Uptown Special",
+					"image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e029860171ddfee17f77a570cf6"
+				},
+				"description": "Entrada triunfal de John con chaquetas vintage y coreografía improvisada en el pasillo.",
+				"links": {
+					"spotify": "https://open.spotify.com/track/32OlwWuMpZ6b0aN2RZOeMS",
+					"youtube": "https://www.youtube.com/watch?v=OPf0YbXqDm0"
+				}
+			},
+			{
+				"id": "demo-johns-party-song-2",
+				"name": "September",
+				"artists": ["Earth, Wind & Fire"],
+				"duration": "3:35",
+				"album": {
+					"name": "The Best of Earth, Wind & Fire Vol. 1",
+					"image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/5d/66/3b/5d663b1f-dcc9-030d-0cf1-fc5d344d391d/886447618448.jpg/600x600bb.jpg"
+				},
+				"description": "Baile en cadena en la sala; alguien gritó el día equivocado y nadie le hizo caso.",
+				"links": {
+					"spotify": "https://open.spotify.com/track/2grjqo0frpi202HaWFQX3B",
+					"youtube": "https://www.youtube.com/watch?v=Gs069dndIYk"
+				}
+			},
+			{
+				"id": "demo-johns-party-song-3",
+				"name": "Levitating",
+				"artists": ["Dua Lipa"],
+				"duration": "3:23",
+				"album": {
+					"name": "Future Nostalgia",
+					"image": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/6c/11/d6/6c11d681-aa3a-d59e-4c2e-f77e181026ab/190295092665.jpg/600x600bb.jpg"
+				},
+				"description": "Modo discoteca en el comedor: luces del ventilador de techo y copas en alto.",
+				"links": {
+					"spotify": "https://open.spotify.com/track/463CkQjx2Zk1yXoBuierM9",
+					"youtube": "https://www.youtube.com/watch?v=TUVcZfQe-Kw"
+				}
+			},
+			{
+				"id": "demo-johns-party-song-4",
+				"name": "Mr. Brightside",
+				"artists": ["The Killers"],
+				"duration": "3:42",
+				"album": {
+					"name": "Hot Fuss",
+					"image": "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e029c284a6855f4945dc5a3cd73"
+				},
+				"description": "Himno obligado del karaoke; John cantó el puente dos veces seguidas sin cansarse.",
+				"links": {
+					"spotify": "https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp",
+					"youtube": "https://www.youtube.com/watch?v=gGdGFtwCNBE"
+				}
+			},
+			{
+				"id": "demo-johns-party-song-5",
+				"name": "I Gotta Feeling",
+				"artists": ["Black Eyed Peas"],
+				"duration": "4:49",
+				"album": {
+					"name": "The E.N.D.",
+					"image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/42/fc/47/42fc4794-3c69-8c00-e528-1c7e92b5ac93/09UMGIM13833.rgb.jpg/600x600bb.jpg"
+				},
+				"description": "Cierre épico antes de pedir comida a las 2 a.m.; todos juraron que mañana no había resaca.",
+				"links": {
+					"spotify": "https://open.spotify.com/track/2H1047e0oMSj10dgpGWSfI",
+					"youtube": "https://www.youtube.com/watch?v=uSD4vsh1zDA"
+				}
+			}
+		]
+	}
+]

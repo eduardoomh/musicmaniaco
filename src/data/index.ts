@@ -79,6 +79,16 @@ export function findCollectionsByUsername(username: string): Collection[] {
 	return collections.filter((collection) => collection.user.username === username);
 }
 
+/** Colección de demo solo para `HomeAboutCard` (no aparece en perfil ni rutas). */
+export function findHomeDemoCollection(): Collection {
+	const demo = loadData<Collection[]>('collections-test');
+	const collection = demo.find((item) => item.id === 'demo-johns-party-001');
+	if (!collection) {
+		throw new Error('No se encontró la colección demo en collections-test.json');
+	}
+	return collection;
+}
+
 /** Busca una colección por ruta `/{username}/{slug}`. */
 export function findCollectionByPath(username: string, slug: string): Collection | undefined {
 	const collections = loadData<Collection[]>('collections');

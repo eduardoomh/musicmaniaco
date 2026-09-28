@@ -5,6 +5,19 @@ import { defineConfig, fontProviders } from 'astro/config';
 export default defineConfig({
 	// URL pública del sitio (previews en redes y sitemap). Ajusta al dominio real en producción.
 	site: 'https://musicmaniaco.com',
+	server: {
+		host: true,
+	},
+	vite: {
+		server: {
+			// Túneles (Pinggy, ngrok, etc.): subdominios *.free.pinggy.net
+			allowedHosts: [
+				'bifnv-2806-2f0-4680-fbbc-e467-2d18-bcc7-6585.free.pinggy.net',
+				'.free.pinggy.net',
+				'.pinggy.net',
+			],
+		},
+	},
 	fonts: [
 		{
 			provider: fontProviders.google(),

@@ -33,13 +33,26 @@ const {
 const metaBase = Astro.site ?? Astro.url;
 const canonical = canonicalPath ? new URL(canonicalPath, metaBase).href : undefined;
 const shareImage = image ?? new URL(defaultShareImage.src, metaBase).href;
+
+const chromeBackground = `linear-gradient(90deg, ${gradientStart} 0%, ${gradientEnd} ${gradientEndAt}%)`;
+const htmlStyle = [
+	`background:${chromeBackground}`,
+	'color-scheme:dark',
+	`--layout-chrome-start:${gradientStart}`,
+	`--layout-chrome-end:${gradientEnd}`,
+	`--layout-chrome-end-at:${gradientEndAt}%`,
+].join(';');
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" style={htmlStyle}>
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, viewport-fit=cover" />
+		<meta name="theme-color" content={gradientStart} />
+		<meta name="theme-color" content={gradientStart} media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content={gradientStart} media="(prefers-color-scheme: dark)" />
+		<meta name="color-scheme" content="dark" />
 		<link rel="icon" href={maniacoFavicon} type="image/x-icon" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
@@ -60,22 +73,26 @@ const shareImage = image ?? new URL(defaultShareImage.src, metaBase).href;
 	</body>
 </html>
 
-<style define:vars={{ gradientStart, gradientEnd, gradientEndAt: `${gradientEndAt}%` }}>
-	html,
+<style is:global>
+	/* html/body no reciben scope de Astro; el fondo del chrome va en style inline en <html> */
+	html {
+		margin: 0;
+		min-height: 100%;
+	}
+
 	body {
 		margin: 0;
 		width: 100%;
-		height: 100%;
+		min-height: 100%;
 		font-family: var(--font-inter);
-	}
-
-	html {
-		background-color: var(--gradientStart);
-	}
-
-	body {
 		background-color: #ffffff;
 		isolation: isolate;
 	}
 
+	@supports (-webkit-touch-callout: none) {
+		html,
+		body {
+			min-height: -webkit-fill-available;
+		}
+	}
 </style>

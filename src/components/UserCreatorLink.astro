@@ -1,0 +1,53 @@
+---
+interface Props {
+	username: string;
+	avatarSrc: string;
+}
+
+const { username, avatarSrc } = Astro.props;
+---
+
+<a class="user-creator-link" href={`/${username}`}>
+	<img
+		class="user-creator-link__avatar"
+		src={avatarSrc}
+		alt=""
+		width={24}
+		height={24}
+		loading="lazy"
+		decoding="async"
+	/>
+	<span class="user-creator-link__nickname">{username}</span>
+</a>
+
+<style>
+	.user-creator-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		margin: 0;
+		font-size: 14px;
+		opacity: 0.85;
+		color: inherit;
+		text-decoration: none;
+		width: fit-content;
+		border-radius: 999px;
+		transition: opacity 0.2s ease;
+	}
+
+	.user-creator-link:hover {
+		opacity: 1;
+	}
+
+	.user-creator-link__avatar {
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		object-fit: cover;
+		flex-shrink: 0;
+	}
+
+	.user-creator-link__nickname {
+		line-height: 1;
+	}
+</style>

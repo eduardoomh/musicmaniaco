@@ -2,18 +2,33 @@
 interface Props {
 	title: string;
 	fontSize?: number;
+	mobileFontSize?: number;
 	as?: 'h1' | 'h2';
 }
 
-const { title, fontSize = 32, as: Tag = 'h1' } = Astro.props;
+const { title, fontSize = 32, mobileFontSize, as: Tag = 'h1' } = Astro.props;
+
+const titleStyle = [
+	`--collection-title-size: ${fontSize}px`,
+	mobileFontSize != null ? `--collection-title-size-mobile: ${mobileFontSize}px` : '',
+]
+	.filter(Boolean)
+	.join('; ');
 ---
 
-<Tag class="collection-title" style={`font-size: ${fontSize}px`}>{title}</Tag>
+<Tag class="collection-title" style={titleStyle}>{title}</Tag>
 
 <style>
 	.collection-title {
 		margin: 0;
 		font-weight: 700;
 		color: #f6f0e3;
+		font-size: var(--collection-title-size, 32px);
+	}
+
+	@media (max-width: 768px) {
+		.collection-title {
+			font-size: var(--collection-title-size-mobile, var(--collection-title-size, 32px));
+		}
 	}
 </style>
