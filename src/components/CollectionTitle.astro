@@ -1,0 +1,19 @@
+---
+interface Props {
+	title: string;
+	fontSize?: number;
+	as?: 'h1' | 'h2';
+}
+
+const { title, fontSize = 32, as: Tag = 'h1' } = Astro.props;
+---
+
+<Tag class="collection-title" style={`font-size: ${fontSize}px`}>{title}</Tag>
+
+<style>
+	.collection-title {
+		margin: 0;
+		font-weight: 700;
+		color: #f6f0e3;
+	}
+</style>

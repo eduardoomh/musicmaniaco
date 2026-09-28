@@ -2,6 +2,7 @@
 import CardDescription from '../CardDescription.astro';
 import CardImage from '../CardImage.astro';
 import CollectionBadge from '../CollectionBadge.astro';
+import CollectionTitle from '../CollectionTitle.astro';
 import eduardoomh from '../../assets/collections/eduardoomh.jpeg';
 ---
 
@@ -10,7 +11,7 @@ import eduardoomh from '../../assets/collections/eduardoomh.jpeg';
 		<CardImage src={eduardoomh.src} alt="John's Party Music" />
 		<CollectionBadge />
 		<p class="about__card-secondary-text">15 canciones</p>
-		<h2>John's Party Music</h2>
+		<CollectionTitle as="h2" title="John's Party Music" fontSize={24} />
 		<p class="about__card-secondary-text">22 de Agosto del 2026</p>
 		<hr class="about__card-hr" />
 		<CardDescription text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos." />
@@ -31,12 +32,6 @@ import eduardoomh from '../../assets/collections/eduardoomh.jpeg';
 		gap: 12px;
 		margin-top: 24px;
 		padding: 0 40px;
-	}
-	.about__card h2 {
-		margin: 0;
-		font-size: 24px;
-		font-weight: 700;
-		color: #F6F0E3;
 	}
 	.about__card-secondary-text {
 		font-size: 12px;

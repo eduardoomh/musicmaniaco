@@ -3,6 +3,8 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
+	// URL pública del sitio (previews en redes y sitemap). Ajusta al dominio real en producción.
+	site: 'https://musicmaniaco.com',
 	fonts: [
 		{
 			provider: fontProviders.google(),

@@ -1,0 +1,42 @@
+---
+import CollectionPage from '../../components/collection/CollectionPage.astro';
+import Layout from '../../layouts/Layout.astro';
+import {
+	buildGradientCss,
+	findCollectionByPath,
+	resolveAssetImage,
+} from '../../data';
+import { eduardoomhChromeGradient } from '../../data/eduardoomh-theme';
+import { absoluteUrl, siteOrigin, truncateMetaDescription } from '../../utils/social-meta';
+
+const collection = findCollectionByPath('eduardoomh', 'olvidaste-tus-flotadores');
+
+if (!collection) {
+	return new Response(null, { status: 404, statusText: 'Not Found' });
+}
+
+const cover = resolveAssetImage(collection.image);
+const coverSrc = typeof cover === 'string' ? cover : cover.src;
+const pageGradient = buildGradientCss(collection.settings.gradient);
+const { gradientStart, gradientEnd, gradientEndAt } = eduardoomhChromeGradient;
+const metaBase = siteOrigin(Astro.site, Astro.url);
+const pageTitle = `${collection.name} · Musicmaniaco`;
+const metaDescription = truncateMetaDescription(
+	`${collection.description} · ${collection.songs.length} canciones por ${collection.user.name} (@${collection.user.username}).`,
+);
+const ogImage = absoluteUrl(coverSrc, metaBase);
+---
+
+<Layout
+	title={pageTitle}
+	description={metaDescription}
+	image={ogImage}
+	canonicalPath="/eduardoomh/olvidaste-tus-flotadores"
+	ogType="website"
+	twitterCard="summary_large_image"
+	gradientStart={gradientStart}
+	gradientEnd={gradientEnd}
+	gradientEndAt={gradientEndAt}
+>
+	<CollectionPage collection={collection} coverSrc={coverSrc} pageGradient={pageGradient} />
+</Layout>

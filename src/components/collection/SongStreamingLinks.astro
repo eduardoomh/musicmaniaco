@@ -1,0 +1,131 @@
+---
+import AppleMusicIcon from '../icons/AppleMusicIcon.astro';
+import SpotifyIcon from '../icons/SpotifyIcon.astro';
+import YouTubeIcon from '../icons/YouTubeIcon.astro';
+import type { CollectionSong } from '../../types/collection';
+
+interface Props {
+	links: CollectionSong['links'];
+	borderColor: string;
+	songName: string;
+}
+
+const { links, borderColor, songName } = Astro.props;
+
+const items = [
+	{
+		key: 'appleMusic',
+		href: links?.appleMusic,
+		label: `Escuchar ${songName} en Apple Music`,
+		Icon: AppleMusicIcon,
+	},
+	{
+		key: 'spotify',
+		href: links?.spotify,
+		label: `Escuchar ${songName} en Spotify`,
+		Icon: SpotifyIcon,
+	},
+	{
+		key: 'youtube',
+		href: links?.youtube,
+		label: `Ver ${songName} en YouTube`,
+		Icon: YouTubeIcon,
+	},
+].filter((item) => Boolean(item.href));
+---
+
+{
+	items.length > 0 && (
+		<div class="song-streaming-links" style={`--link-border-color: ${borderColor}`}>
+			{items.map((item, index) => (
+				<a
+					class:list={[
+						'song-streaming-links__btn',
+						index === 0 && 'song-streaming-links__btn--first',
+						index === items.length - 1 && 'song-streaming-links__btn--last',
+					]}
+					href={item.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label={item.label}
+				>
+					<item.Icon size={16} />
+				</a>
+			))}
+		</div>
+	)
+}
+
+<style>
+	.song-streaming-links {
+		display: inline-flex;
+		flex-direction: row;
+		align-items: stretch;
+	}
+
+	.song-streaming-links__btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		border: 1px solid var(--link-border-color);
+		background: transparent;
+		color: #f6f0e3;
+		text-decoration: none;
+		line-height: 0;
+		transition:
+			background-color 0.22s ease,
+			border-color 0.22s ease,
+			color 0.22s ease,
+			box-shadow 0.22s ease,
+			transform 0.22s ease;
+	}
+
+	.song-streaming-links__btn:not(:first-child) {
+		margin-left: -1px;
+	}
+
+	.song-streaming-links__btn--first {
+		border-radius: 8px 0 0 8px;
+	}
+
+	.song-streaming-links__btn--last {
+		border-radius: 0 8px 8px 0;
+	}
+
+	.song-streaming-links__btn:only-child {
+		border-radius: 8px;
+	}
+
+	.song-streaming-links__btn:hover {
+		background-color: rgba(255, 255, 255, 0.12);
+		border-color: color-mix(in srgb, var(--link-border-color) 55%, #ffffff);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+		transform: translateY(-1px);
+		z-index: 1;
+	}
+
+	.song-streaming-links__btn:active {
+		transform: translateY(0);
+		box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+		transition-duration: 0.1s;
+	}
+
+	.song-streaming-links__btn:focus-visible {
+		outline: 2px solid color-mix(in srgb, var(--link-border-color) 70%, #ffffff);
+		outline-offset: 2px;
+		z-index: 1;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.song-streaming-links__btn {
+			transition: none;
+		}
+
+		.song-streaming-links__btn:hover,
+		.song-streaming-links__btn:active {
+			transform: none;
+		}
+	}
+</style>

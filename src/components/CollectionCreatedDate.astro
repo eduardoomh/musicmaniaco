@@ -1,0 +1,38 @@
+---
+import AntIcon from './icons/AntIcon.astro';
+import { ClockCircleOutlined } from './icons/outlined';
+
+interface Props {
+	createdAt: string;
+}
+
+const { createdAt } = Astro.props;
+
+const date = new Date(createdAt);
+const day = date.getUTCDate();
+const month = date.toLocaleDateString('es-MX', { month: 'long', timeZone: 'UTC' });
+const monthLabel = month.charAt(0).toUpperCase() + month.slice(1);
+const year = date.getUTCFullYear();
+const label = `${day} de ${monthLabel} del ${year}`;
+---
+
+<div class="collection-created-date">
+	<AntIcon icon={ClockCircleOutlined} size={14} />
+	<time class="collection-created-date__text" datetime={createdAt}>{label}</time>
+</div>
+
+<style>
+	.collection-created-date {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin: 0;
+		font-size: 14px;
+		opacity: 0.85;
+		color: inherit;
+	}
+
+	.collection-created-date__text {
+		line-height: 1;
+	}
+</style>

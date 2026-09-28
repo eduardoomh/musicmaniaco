@@ -2,29 +2,55 @@
 import { Font } from 'astro:assets';
 import Footer from '../components/Footer.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import SiteMeta from '../components/SiteMeta.astro';
 import maniacoFavicon from '../assets/maniaco-favicon.ico';
+import defaultShareImage from '../assets/music.maniaco-full-logo-negative.svg';
 
 interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	canonicalPath?: string;
+	ogType?: string;
+	twitterCard?: 'summary' | 'summary_large_image';
 	gradientStart?: string;
 	gradientEnd?: string;
 	gradientEndAt?: number;
 }
 
 const {
+	title = 'Musicmaniaco colecciones musicales',
+	description = 'Crea colecciones, documenta tu música y compártela con claridad.',
 	gradientStart = '#05291d',
 	gradientEnd = '#1d1e1e',
 	gradientEndAt = 94,
+	image,
+	canonicalPath,
+	ogType,
+	twitterCard,
 } = Astro.props;
+
+const metaBase = Astro.site ?? Astro.url;
+const canonical = canonicalPath ? new URL(canonicalPath, metaBase).href : undefined;
+const shareImage = image ?? new URL(defaultShareImage.src, metaBase).href;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" href={maniacoFavicon} type="image/x-icon" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Musicmaniaco colecciones musicales</title>
+		<title>{title}</title>
+		<SiteMeta
+			title={title}
+			description={description}
+			image={shareImage}
+			canonical={canonical}
+			ogType={ogType}
+			twitterCard={twitterCard}
+		/>
 		<Font cssVariable="--font-inter" preload />
 	</head>
 	<body>

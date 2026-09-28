@@ -1,0 +1,84 @@
+---
+import OutlineButton from '../OutlineButton.astro';
+import AntIcon from '../icons/AntIcon.astro';
+import { EyeInvisibleOutlined, EyeOutlined } from '../icons/outlined';
+
+interface Props {
+	borderColor: string;
+	showDescriptions: boolean;
+	showToggle: boolean;
+}
+
+const { borderColor, showDescriptions, showToggle } = Astro.props;
+---
+
+<div class="collection-songs-heading">
+	<h2 class="collection-songs-heading__title">Canciones</h2>
+	{
+		showToggle && (
+			<OutlineButton
+				id="toggle-song-descriptions"
+				borderColor={borderColor}
+				aria-pressed={showDescriptions ? 'true' : 'false'}
+				aria-label="Mostrar u ocultar descripciones de canciones"
+			>
+				<span slot="icon" class="collection-songs-heading__icon collection-songs-heading__icon--show">
+					<AntIcon icon={EyeOutlined} size={16} />
+				</span>
+				<span slot="icon" class="collection-songs-heading__icon collection-songs-heading__icon--hide">
+					<AntIcon icon={EyeInvisibleOutlined} size={16} />
+				</span>
+				<span slot="label" class="collection-songs-heading__label collection-songs-heading__label--show">
+					Mostrar descripciones
+				</span>
+				<span slot="label" class="collection-songs-heading__label collection-songs-heading__label--hide">
+					Ocultar descripciones
+				</span>
+			</OutlineButton>
+		)
+	}
+</div>
+
+<style>
+	.collection-songs-heading {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		margin-bottom: 20px;
+	}
+
+	.collection-songs-heading__title {
+		margin: 0;
+		font-size: 24px;
+		font-weight: 700;
+		color: #f6f0e3;
+	}
+
+	.collection-songs-heading__icon,
+	.collection-songs-heading__label {
+		display: none;
+	}
+
+	:global(.collection-page--song-descriptions-visible) .collection-songs-heading__icon--hide,
+	:global(.collection-page--song-descriptions-visible) .collection-songs-heading__label--hide {
+		display: inline-flex;
+	}
+
+	:global(.collection-page--song-descriptions-hidden) .collection-songs-heading__icon--show,
+	:global(.collection-page--song-descriptions-hidden) .collection-songs-heading__label--show {
+		display: inline-flex;
+	}
+
+	.collection-songs-heading__label--show,
+	.collection-songs-heading__label--hide {
+		line-height: 1.2;
+	}
+
+	@media (max-width: 768px) {
+		.collection-songs-heading {
+			flex-wrap: wrap;
+		}
+	}
+</style>

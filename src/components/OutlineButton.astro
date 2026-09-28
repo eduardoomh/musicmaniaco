@@ -1,0 +1,106 @@
+---
+interface Props {
+	label?: string;
+	borderColor: string;
+	href?: string;
+	id?: string;
+	class?: string;
+	'aria-pressed'?: 'true' | 'false';
+	'aria-label'?: string;
+}
+
+const {
+	label,
+	borderColor,
+	href,
+	id,
+	class: className,
+	'aria-pressed': ariaPressed,
+	'aria-label': ariaLabel,
+} = Astro.props;
+const Tag = href ? 'a' : 'button';
+const hasLabelSlot = Astro.slots.has('label');
+---
+
+<Tag
+	class:list={['outline-button', className]}
+	id={id}
+	href={href}
+	type={href ? undefined : 'button'}
+	style={`border-color: ${borderColor}; --outline-button-border: ${borderColor}`}
+	aria-pressed={ariaPressed}
+	aria-label={ariaLabel}
+>
+	<span class="outline-button__icon">
+		<slot name="icon" />
+	</span>
+	<span class="outline-button__label">
+		{hasLabelSlot ? <slot name="label" /> : label}
+	</span>
+</Tag>
+
+<style>
+	.outline-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		padding: 8px 14px;
+		border: 1px solid;
+		border-radius: 8px;
+		background: transparent;
+		color: #f6f0e3;
+		font-family: inherit;
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 1;
+		text-decoration: none;
+		cursor: pointer;
+		white-space: nowrap;
+		transition:
+			background-color 0.22s ease,
+			border-color 0.22s ease,
+			color 0.22s ease,
+			box-shadow 0.22s ease,
+			transform 0.22s ease;
+	}
+
+	.outline-button:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+		border-color: color-mix(in srgb, var(--outline-button-border) 55%, #ffffff);
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+		transform: translateY(-1px);
+	}
+
+	.outline-button:active {
+		transform: translateY(0);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+		transition-duration: 0.1s;
+	}
+
+	.outline-button:focus-visible {
+		outline: 2px solid color-mix(in srgb, var(--outline-button-border) 70%, #ffffff);
+		outline-offset: 2px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.outline-button {
+			transition: none;
+		}
+
+		.outline-button:hover,
+		.outline-button:active {
+			transform: none;
+		}
+	}
+
+	.outline-button__icon {
+		display: inline-flex;
+		line-height: 0;
+		flex-shrink: 0;
+	}
+
+	.outline-button__label {
+		line-height: 1.2;
+	}
+</style>

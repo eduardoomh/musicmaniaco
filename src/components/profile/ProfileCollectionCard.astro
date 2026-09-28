@@ -1,0 +1,80 @@
+---
+import CardImage from '../CardImage.astro';
+import CollectionTitle from '../CollectionTitle.astro';
+import { collectionSlugFromImage } from '../../data';
+import type { Collection } from '../../types/collection';
+
+interface Props {
+	collection: Collection;
+	coverSrc: string;
+	username: string;
+	borderColor: string;
+}
+
+const { collection, coverSrc, username, borderColor } = Astro.props;
+const slug = collectionSlugFromImage(collection);
+const href = `/${username}/${slug}`;
+---
+
+<a class="profile-collection-card" href={href} style={`--card-border-color: ${borderColor}`}>
+	<CardImage src={coverSrc} alt={collection.name} />
+	<div class="profile-collection-card__meta">
+		<CollectionTitle as="h2" title={collection.name} fontSize={24} />
+		<p class="profile-collection-card__count">{collection.songs.length} canciones</p>
+	</div>
+</a>
+
+<style>
+	.profile-collection-card {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		gap: 24px;
+		padding: 16px;
+		border-radius: 8px;
+		background: rgba(255, 255, 255, 0.06);
+		border: 1px solid transparent;
+		color: inherit;
+		text-decoration: none;
+		transition:
+			background-color 0.22s ease,
+			border-color 0.22s ease,
+			box-shadow 0.22s ease,
+			transform 0.22s ease;
+	}
+
+	.profile-collection-card:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+		border-color: color-mix(in srgb, var(--card-border-color) 55%, #ffffff);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+		transform: translateY(-2px);
+	}
+
+	.profile-collection-card__meta {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		flex: 1;
+		min-width: 200px;
+	}
+
+	.profile-collection-card__meta :global(.collection-title) {
+		margin: 0;
+	}
+
+	.profile-collection-card__count {
+		margin: 0;
+		font-size: 14px;
+		opacity: 0.85;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.profile-collection-card {
+			transition: none;
+		}
+
+		.profile-collection-card:hover {
+			transform: none;
+		}
+	}
+</style>

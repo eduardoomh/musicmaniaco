@@ -1,0 +1,386 @@
+---
+import CardDescription from '../CardDescription.astro';
+import CardImage from '../CardImage.astro';
+import CollectionBadge from '../CollectionBadge.astro';
+import CollectionCreatedDate from '../CollectionCreatedDate.astro';
+import CollectionTitle from '../CollectionTitle.astro';
+import OutlineButton from '../OutlineButton.astro';
+import AntIcon from '../icons/AntIcon.astro';
+import AppleMusicIcon from '../icons/AppleMusicIcon.astro';
+import SpotifyIcon from '../icons/SpotifyIcon.astro';
+import CollectionSongsHeading from './CollectionSongsHeading.astro';
+import ShareCollectionModal from './ShareCollectionModal.astro';
+import SongStreamingLinks from './SongStreamingLinks.astro';
+import { ShareAltOutlined } from '../icons/outlined';
+import { resolveAssetImage } from '../../data';
+import type { Collection } from '../../types/collection';
+
+interface Props {
+	collection: Collection;
+	coverSrc: string;
+	pageGradient: string;
+}
+
+const { collection, coverSrc, pageGradient } = Astro.props;
+
+const creatorAvatar = resolveAssetImage(collection.user.avatar);
+const creatorAvatarSrc = typeof creatorAvatar === 'string' ? creatorAvatar : creatorAvatar.src;
+const borderColor = collection.settings.borderColor ?? '#f6f0e3';
+const descriptionCardColor = collection.settings.descriptionCardColor ?? '#47776f';
+const descriptionCardBorderColor =
+	collection.settings.descriptionCardBorderColor ?? borderColor;
+const showSongsDescription = collection.settings.showSongsDescription !== false;
+const hasSongDescriptions = collection.songs.some((song) => Boolean(song.description));
+---
+
+<section
+	class:list={[
+		'collection-page',
+		showSongsDescription
+			? 'collection-page--song-descriptions-visible'
+			: 'collection-page--song-descriptions-hidden',
+	]}
+	style={`--page-gradient: ${pageGradient}`}
+>
+	<div class="collection-page__header">
+		<div class="collection-page__hero">
+			<CardImage src={coverSrc} alt={collection.name} />
+			<div class="collection-page__meta">
+				<div class="collection-page__badge-row">
+					<CollectionBadge />
+					<p class="collection-page__count">{collection.songs.length} canciones</p>
+				</div>
+				<CollectionTitle title={collection.name} fontSize={36} />
+				<CollectionCreatedDate createdAt={collection.createdAt} />
+				<a
+					class="collection-page__creator"
+					href={`/${collection.user.username}`}
+				>
+					<img
+						class="collection-page__creator-avatar"
+						src={creatorAvatarSrc}
+						alt=""
+						width={24}
+						height={24}
+						loading="lazy"
+						decoding="async"
+					/>
+					<span class="collection-page__creator-nickname">{collection.user.username}</span>
+				</a>
+			</div>
+		</div>
+		<div class="collection-page__actions">
+			<OutlineButton id="collection-share-open" label="Compartir" borderColor={borderColor}>
+				<AntIcon slot="icon" icon={ShareAltOutlined} size={16} />
+			</OutlineButton>
+			<OutlineButton
+				borderColor={borderColor}
+				href={collection.links?.appleMusic}
+				aria-label="Escuchar en Apple Music"
+			>
+				<AppleMusicIcon slot="icon" size={16} />
+				<span slot="label" class="collection-page__action-label collection-page__action-label--full">
+					Escuchar en Apple Music
+				</span>
+				<span slot="label" class="collection-page__action-label collection-page__action-label--short">
+					Escuchar
+				</span>
+			</OutlineButton>
+			<OutlineButton
+				borderColor={borderColor}
+				href={collection.links?.spotify}
+				aria-label="Escuchar en Spotify"
+			>
+				<SpotifyIcon slot="icon" size={16} />
+				<span slot="label" class="collection-page__action-label collection-page__action-label--full">
+					Escuchar en Spotify
+				</span>
+				<span slot="label" class="collection-page__action-label collection-page__action-label--short">
+					Escuchar
+				</span>
+			</OutlineButton>
+		</div>
+		<CardDescription
+			text={collection.description}
+			backgroundColor={descriptionCardColor}
+			borderColor={descriptionCardBorderColor}
+			fontSize={16}
+		/>
+	</div>
+
+	<div class="collection-page__songs-wrap">
+		<CollectionSongsHeading
+			borderColor={borderColor}
+			showDescriptions={showSongsDescription}
+			showToggle={hasSongDescriptions}
+		/>
+		{
+			collection.songs.length === 0 ? (
+				<p class="collection-page__songs-empty">Esta colección aún no tiene canciones</p>
+			) : (
+				<ol class="collection-page__songs">
+					{collection.songs.map((song, index) => (
+						<li class="collection-page__song-entry">
+							<div class="collection-page__song">
+								<span class="collection-page__song-index">{index + 1}</span>
+								<img
+									class="collection-page__song-cover"
+									src={song.album.image}
+									alt=""
+									width={48}
+									height={48}
+									loading="lazy"
+								/>
+								<div class="collection-page__song-info">
+									<strong>{song.name}</strong>
+									<span>{song.artists.join(', ')}</span>
+								</div>
+								<SongStreamingLinks
+									links={song.links}
+									borderColor={borderColor}
+									songName={song.name}
+								/>
+							</div>
+							{song.description && (
+								<div class="collection-page__song-description">
+									<CardDescription
+										text={song.description}
+										backgroundColor={descriptionCardColor}
+										borderColor={descriptionCardBorderColor}
+									/>
+								</div>
+							)}
+						</li>
+					))}
+				</ol>
+			)
+		}
+	</div>
+
+	<ShareCollectionModal
+		borderColor={borderColor}
+		collectionName={collection.name}
+		pageGradient={pageGradient}
+		coverSrc={coverSrc}
+		gradient={collection.settings.gradient}
+	/>
+</section>
+
+<script>
+	function bindSongDescriptionToggle() {
+		const section = document.querySelector('.collection-page');
+		const toggle = document.getElementById('toggle-song-descriptions');
+		if (!section || !toggle || toggle.dataset.bound === 'true') return;
+
+		toggle.dataset.bound = 'true';
+		toggle.addEventListener('click', () => {
+			const willHide = section.classList.contains('collection-page--song-descriptions-visible');
+			section.classList.toggle('collection-page--song-descriptions-visible', !willHide);
+			section.classList.toggle('collection-page--song-descriptions-hidden', willHide);
+			toggle.setAttribute('aria-pressed', willHide ? 'false' : 'true');
+		});
+	}
+
+	bindSongDescriptionToggle();
+	document.addEventListener('astro:page-load', bindSongDescriptionToggle);
+</script>
+
+<style>
+	.collection-page {
+		min-height: calc(100vh - 74px - 280px);
+		padding: 40px 24px 64px;
+		background: var(--page-gradient);
+		color: #f6f0e3;
+	}
+
+	.collection-page__header {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		max-width: 960px;
+		margin: 0 auto 40px;
+	}
+
+	.collection-page__hero {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		gap: 32px;
+	}
+
+	.collection-page__meta {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		flex: 1;
+		min-width: 260px;
+	}
+
+	.collection-page__badge-row {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.collection-page__meta :global(.collection-title) {
+		margin: 0;
+	}
+
+	.collection-page__count {
+		margin: 0;
+		font-size: 14px;
+		opacity: 0.85;
+	}
+
+	.collection-page__creator {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		margin: 0;
+		font-size: 14px;
+		opacity: 0.85;
+		color: inherit;
+		text-decoration: none;
+		width: fit-content;
+		border-radius: 999px;
+		transition: opacity 0.2s ease;
+	}
+
+	.collection-page__creator:hover {
+		opacity: 1;
+	}
+
+	.collection-page__creator-avatar {
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		object-fit: cover;
+		flex-shrink: 0;
+	}
+
+	.collection-page__creator-nickname {
+		line-height: 1;
+	}
+
+	.collection-page__actions {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.collection-page__action-label--short {
+		display: none;
+	}
+
+	.collection-page__songs-wrap {
+		max-width: 960px;
+		margin: 0 auto;
+	}
+
+	.collection-page--song-descriptions-hidden .collection-page__song-description {
+		display: none;
+	}
+
+	.collection-page__songs-empty {
+		margin: 0;
+		font-size: 14px;
+		opacity: 0.85;
+		color: #f6f0e3;
+	}
+
+	.collection-page__songs {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+
+	.collection-page__song-entry {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.collection-page--song-descriptions-visible .collection-page__song-entry {
+		margin-bottom: 28px;
+	}
+
+	.collection-page--song-descriptions-visible .collection-page__song-entry:last-child {
+		margin-bottom: 0;
+	}
+
+	.collection-page--song-descriptions-hidden .collection-page__songs {
+		gap: 8px;
+	}
+
+	.collection-page__song {
+		display: grid;
+		grid-template-columns: 28px 48px 1fr auto;
+		align-items: center;
+		gap: 12px;
+		padding: 10px 12px;
+		border-radius: 8px;
+		background: rgba(255, 255, 255, 0.06);
+	}
+
+	.collection-page__song-index {
+		opacity: 0.6;
+		font-size: 14px;
+		text-align: center;
+	}
+
+	.collection-page__song-cover {
+		border-radius: 6px;
+		object-fit: cover;
+	}
+
+	.collection-page__song-info {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		min-width: 0;
+	}
+
+	.collection-page__song-info strong {
+		font-size: 15px;
+		font-weight: 600;
+	}
+
+	.collection-page__song-info span {
+		font-size: 13px;
+		opacity: 0.75;
+	}
+
+	@media (max-width: 768px) {
+		.collection-page {
+			padding: 24px 16px 48px;
+		}
+
+		.collection-page__hero {
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+
+		.collection-page__actions {
+			justify-content: center;
+		}
+
+		.collection-page__action-label--full {
+			display: none;
+		}
+
+		.collection-page__action-label--short {
+			display: inline;
+		}
+
+		.collection-page__header {
+			gap: 20px;
+		}
+	}
+</style>

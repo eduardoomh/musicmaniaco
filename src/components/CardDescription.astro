@@ -2,32 +2,44 @@
 interface Props {
 	text: string;
 	fontSize?: number;
+	backgroundColor?: string;
+	borderColor?: string;
 }
 
-const { text, fontSize = 14 } = Astro.props;
+const {
+	text,
+	fontSize = 14,
+	backgroundColor = '#47776f',
+	borderColor = '#df7f31',
+} = Astro.props;
 ---
 
-<div class="card-description">
-	<p>{text}</p>
+<div
+	class="card-description"
+	style={`background-color: ${backgroundColor}; border-left-color: ${borderColor}`}
+>
+	<p class="card-description__text" style={`font-size: ${fontSize}px`}>{text}</p>
 </div>
 
-<style define:vars={{ fontSize: `${fontSize}px` }}>
+<style>
 	.card-description {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
 		width: 100%;
-		height: 58px;
-		padding: 4px 16px;
+		min-height: 58px;
+		padding: 12px 16px;
 		border-radius: 8px;
-		font-size: var(--fontSize);
-		background-color: #47776f;
 		color: #fff;
-		border-left: 4px solid #df7f31;
+		border-left-width: 4px;
+		border-left-style: solid;
+		box-sizing: border-box;
 	}
 
-	.card-description p {
+	.card-description__text {
 		margin: 0;
 		padding: 0;
+		line-height: 1.5;
+		width: 100%;
 	}
 </style>

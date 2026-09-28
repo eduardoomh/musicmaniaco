@@ -1,0 +1,22 @@
+[
+	{
+		"id": "user-1",
+		"username": "eduardoomh",
+		"name": "Eduardo Martínez",
+		"avatar": "/collections/eduardoomh.jpeg",
+		"bio": "Ingeniero de software y amante de la música. Aquí documento colecciones con historias, recuerdos y canciones que marcan momentos.",
+		"settings": {
+			"gradient": {
+				"angle": 135,
+				"stops": [
+					{ "color": "#18181A", "at": 0 },
+					{ "color": "#2A2A2E", "at": 50 },
+					{ "color": "#3A3A40", "at": 100 }
+				]
+			},
+			"borderColor": "#C9C5BC",
+			"descriptionCardColor": "#FFFFFF14",
+			"descriptionCardBorderColor": "#C9C5BC"
+		}
+	}
+]

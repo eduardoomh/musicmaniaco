@@ -1,0 +1,520 @@
+---
+import OutlineButton from '../OutlineButton.astro';
+import AntIcon from '../icons/AntIcon.astro';
+import brandLogo from '../../assets/music.maniaco-full-logo-negative.svg';
+import { CloseOutlined, CopyOutlined, DownloadOutlined } from '../icons/outlined';
+
+interface Props {
+	borderColor: string;
+	collectionName: string;
+	pageGradient: string;
+	coverSrc: string;
+	gradient: { angle: number; stops: { color: string; at: number }[] };
+}
+
+const { borderColor, collectionName, pageGradient, coverSrc, gradient } = Astro.props;
+const gradientJson = JSON.stringify(gradient);
+---
+
+<div
+	id="share-collection-modal"
+	class="share-modal"
+	data-collection-name={collectionName}
+	data-cover-src={coverSrc}
+	data-gradient={gradientJson}
+	data-logo-src={brandLogo.src}
+	data-logo-width={String(brandLogo.width)}
+	data-logo-height={String(brandLogo.height)}
+	aria-hidden="true"
+	role="dialog"
+	aria-modal="true"
+	aria-labelledby="share-modal-title"
+	style={`--share-border-color: ${borderColor}; --share-page-gradient: ${pageGradient}`}
+>
+	<button type="button" class="share-modal__backdrop" data-share-close aria-label="Cerrar"></button>
+	<div class="share-modal__panel">
+		<button type="button" class="share-modal__close" data-share-close aria-label="Cerrar">
+			<AntIcon icon={CloseOutlined} size={18} />
+		</button>
+		<h2 id="share-modal-title" class="share-modal__title">Compartir colección</h2>
+		<p class="share-modal__collection-name">{collectionName}</p>
+		<p class="share-modal__hint">
+			Escanea el código QR, copia el enlace o descarga una imagen para compartir en redes.
+		</p>
+		<div class="share-modal__media">
+			<img
+				class="share-modal__cover"
+				src={coverSrc}
+				alt=""
+				width={160}
+				height={160}
+				loading="lazy"
+				decoding="async"
+			/>
+			<canvas id="share-qr-canvas" class="share-modal__qr" width="160" height="160" aria-hidden="true"
+			></canvas>
+		</div>
+		<p id="share-url-text" class="share-modal__url"></p>
+		<div class="share-modal__actions">
+			<OutlineButton id="share-copy-url" borderColor={borderColor} label="Copiar enlace">
+				<AntIcon slot="icon" icon={CopyOutlined} size={16} />
+			</OutlineButton>
+			<OutlineButton id="share-download-image" borderColor={borderColor} label="Descargar imagen">
+				<AntIcon slot="icon" icon={DownloadOutlined} size={16} />
+			</OutlineButton>
+		</div>
+	</div>
+</div>
+
+<script>
+	type GradientStop = { color: string; at: number };
+	type GradientConfig = { angle: number; stops: GradientStop[] };
+
+	type QrModule = {
+		default: {
+			toCanvas: (
+				canvas: HTMLCanvasElement,
+				text: string,
+				options?: { width?: number; margin?: number; color?: { dark?: string; light?: string } },
+			) => Promise<void>;
+		};
+	};
+
+	let qrModulePromise: Promise<QrModule> | null = null;
+
+	function loadQrModule() {
+		if (!qrModulePromise) {
+			qrModulePromise = import('https://cdn.jsdelivr.net/npm/qrcode@1.5.4/+esm') as Promise<QrModule>;
+		}
+		return qrModulePromise;
+	}
+
+	function getModal() {
+		return document.getElementById('share-collection-modal');
+	}
+
+	function getShareUrl() {
+		return window.location.href.split('#')[0];
+	}
+
+	function getGradientConfig(modal: HTMLElement): GradientConfig | null {
+		const raw = modal.dataset.gradient;
+		if (!raw) return null;
+
+		try {
+			return JSON.parse(raw) as GradientConfig;
+		} catch {
+			return null;
+		}
+	}
+
+	function drawGradientBackground(
+		ctx: CanvasRenderingContext2D,
+		width: number,
+		height: number,
+		config: GradientConfig,
+	) {
+		const angleRad = ((config.angle - 90) * Math.PI) / 180;
+		const centerX = width / 2;
+		const centerY = height / 2;
+		const length = Math.sqrt(width * width + height * height) / 2;
+		const x0 = centerX - Math.cos(angleRad) * length;
+		const y0 = centerY - Math.sin(angleRad) * length;
+		const x1 = centerX + Math.cos(angleRad) * length;
+		const y1 = centerY + Math.sin(angleRad) * length;
+		const gradient = ctx.createLinearGradient(x0, y0, x1, y1);
+
+		for (const stop of config.stops) {
+			gradient.addColorStop(stop.at / 100, stop.color);
+		}
+
+		ctx.fillStyle = gradient;
+		ctx.fillRect(0, 0, width, height);
+	}
+
+	async function loadImage(src: string) {
+		const image = new Image();
+		image.decoding = 'async';
+		image.src = src;
+		await image.decode();
+		return image;
+	}
+
+	async function renderShareQr() {
+		const canvas = document.getElementById('share-qr-canvas');
+		const urlText = document.getElementById('share-url-text');
+		if (!(canvas instanceof HTMLCanvasElement) || !urlText) return;
+
+		const url = getShareUrl();
+		urlText.textContent = url;
+
+		try {
+			const QRCode = (await loadQrModule()).default;
+			await QRCode.toCanvas(canvas, url, {
+				width: 160,
+				margin: 1,
+				color: { dark: '#18181A', light: '#FFFFFF' },
+			});
+		} catch {
+			urlText.textContent = `${url} (no se pudo generar el QR)`;
+		}
+	}
+
+	function openShareModal() {
+		const modal = getModal();
+		if (!modal) return;
+
+		modal.classList.add('share-modal--open');
+		modal.setAttribute('aria-hidden', 'false');
+		document.body.classList.add('share-modal-open');
+		void renderShareQr();
+	}
+
+	function closeShareModal() {
+		const modal = getModal();
+		if (!modal) return;
+
+		modal.classList.remove('share-modal--open');
+		modal.setAttribute('aria-hidden', 'true');
+		document.body.classList.remove('share-modal-open');
+	}
+
+	function setOutlineButtonLabel(buttonId: string, message: string, revertTo: string) {
+		const button = document.getElementById(buttonId);
+		if (!(button instanceof HTMLButtonElement) && !(button instanceof HTMLAnchorElement)) return;
+
+		const label = button.querySelector('.outline-button__label');
+		if (!label) return;
+
+		label.textContent = message;
+		window.setTimeout(() => {
+			label.textContent = revertTo;
+		}, 2000);
+	}
+
+	async function copyShareUrl() {
+		const url = getShareUrl();
+
+		try {
+			await navigator.clipboard.writeText(url);
+			setOutlineButtonLabel('share-copy-url', '¡Copiado!', 'Copiar enlace');
+		} catch {
+			window.prompt('Copia este enlace:', url);
+		}
+	}
+
+	function slugifyFileName(value: string) {
+		return value
+			.normalize('NFD')
+			.replace(/[\u0300-\u036f]/g, '')
+			.replace(/[^a-zA-Z0-9]+/g, '-')
+			.replace(/^-+|-+$/g, '')
+			.toLowerCase();
+	}
+
+	function wrapCanvasText(
+		ctx: CanvasRenderingContext2D,
+		text: string,
+		x: number,
+		y: number,
+		maxWidth: number,
+		lineHeight: number,
+	) {
+		const words = text.split(' ');
+		let line = '';
+		let cursorY = y;
+
+		for (const word of words) {
+			const testLine = line ? `${line} ${word}` : word;
+			if (ctx.measureText(testLine).width > maxWidth && line) {
+				ctx.fillText(line, x, cursorY);
+				line = word;
+				cursorY += lineHeight;
+			} else {
+				line = testLine;
+			}
+		}
+
+		if (line) ctx.fillText(line, x, cursorY);
+		return cursorY;
+	}
+
+	function drawRoundedImage(
+		ctx: CanvasRenderingContext2D,
+		image: HTMLImageElement,
+		x: number,
+		y: number,
+		size: number,
+		radius: number,
+	) {
+		ctx.save();
+		ctx.beginPath();
+		ctx.roundRect(x, y, size, size, radius);
+		ctx.clip();
+		ctx.drawImage(image, x, y, size, size);
+		ctx.restore();
+	}
+
+	function drawQrFrame(
+		ctx: CanvasRenderingContext2D,
+		qrCanvas: HTMLCanvasElement,
+		x: number,
+		y: number,
+		size: number,
+	) {
+		ctx.fillStyle = '#FFFFFF';
+		ctx.beginPath();
+		ctx.roundRect(x - 12, y - 12, size + 24, size + 24, 16);
+		ctx.fill();
+		ctx.drawImage(qrCanvas, x, y, size, size);
+	}
+
+	async function downloadShareImage() {
+		const qrCanvas = document.getElementById('share-qr-canvas');
+		const modal = getModal();
+		if (!(qrCanvas instanceof HTMLCanvasElement) || !modal) return;
+
+		const collectionName = modal.dataset.collectionName ?? 'Colección';
+		const coverSrc = modal.dataset.coverSrc;
+		const gradientConfig = getGradientConfig(modal);
+		const exportCanvas = document.createElement('canvas');
+		exportCanvas.width = 1080;
+		exportCanvas.height = 1080;
+		const ctx = exportCanvas.getContext('2d');
+		if (!ctx) return;
+
+		if (gradientConfig) {
+			drawGradientBackground(ctx, exportCanvas.width, exportCanvas.height, gradientConfig);
+		} else {
+			ctx.fillStyle = '#231833';
+			ctx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+		}
+
+		ctx.fillStyle = '#F6F0E3';
+		ctx.textAlign = 'center';
+		ctx.font = '700 52px Inter, system-ui, sans-serif';
+		const titleBottom = wrapCanvasText(ctx, collectionName, 540, 130, 920, 62);
+
+		ctx.font = '500 28px Inter, system-ui, sans-serif';
+		ctx.fillStyle = 'rgba(246, 240, 227, 0.9)';
+		ctx.fillText('Escanea para abrir la colección', 540, titleBottom + 44);
+
+		const tileSize = 360;
+		const gap = 32;
+		const blockWidth = tileSize * 2 + gap;
+		const blockX = (exportCanvas.width - blockWidth) / 2;
+		const blockY = 300;
+
+		if (coverSrc) {
+			try {
+				const coverImage = await loadImage(coverSrc);
+				drawRoundedImage(ctx, coverImage, blockX, blockY, tileSize, 16);
+			} catch {
+				ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
+				ctx.beginPath();
+				ctx.roundRect(blockX, blockY, tileSize, tileSize, 16);
+				ctx.fill();
+			}
+		}
+
+		drawQrFrame(ctx, qrCanvas, blockX + tileSize + gap, blockY, tileSize);
+
+		const logoSrc = modal.dataset.logoSrc;
+		const logoWidthMeta = Number(modal.dataset.logoWidth);
+		const logoHeightMeta = Number(modal.dataset.logoHeight);
+
+		if (logoSrc && logoWidthMeta > 0 && logoHeightMeta > 0) {
+			try {
+				const logoImage = await loadImage(logoSrc);
+				const drawWidth = 300;
+				const drawHeight = (logoHeightMeta / logoWidthMeta) * drawWidth;
+				const logoX = (exportCanvas.width - drawWidth) / 2;
+				const logoY = exportCanvas.height - drawHeight - 52;
+				ctx.drawImage(logoImage, logoX, logoY, drawWidth, drawHeight);
+			} catch {
+				// Si el logo no carga, omitimos la marca en la imagen exportada.
+			}
+		}
+
+		exportCanvas.toBlob((blob) => {
+			if (!blob) return;
+
+			const fileSlug = slugifyFileName(collectionName) || 'coleccion';
+			const objectUrl = URL.createObjectURL(blob);
+			const anchor = document.createElement('a');
+			anchor.href = objectUrl;
+			anchor.download = `musicmaniaco-${fileSlug}-qr.png`;
+			anchor.click();
+			URL.revokeObjectURL(objectUrl);
+			setOutlineButtonLabel('share-download-image', '¡Descargada!', 'Descargar imagen');
+		}, 'image/png');
+	}
+
+	function bindShareModal() {
+		const openBtn = document.getElementById('collection-share-open');
+		const copyBtn = document.getElementById('share-copy-url');
+		const downloadBtn = document.getElementById('share-download-image');
+		const modal = getModal();
+
+		if (!modal || modal.dataset.bound === 'true') return;
+		modal.dataset.bound = 'true';
+
+		openBtn?.addEventListener('click', () => openShareModal());
+		copyBtn?.addEventListener('click', () => void copyShareUrl());
+		downloadBtn?.addEventListener('click', () => void downloadShareImage());
+
+		modal.querySelectorAll('[data-share-close]').forEach((el) => {
+			el.addEventListener('click', () => closeShareModal());
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && modal.classList.contains('share-modal--open')) {
+				closeShareModal();
+			}
+		});
+	}
+
+	bindShareModal();
+	document.addEventListener('astro:page-load', bindShareModal);
+</script>
+
+<style>
+	.share-modal {
+		position: fixed;
+		inset: 0;
+		z-index: 1000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 24px;
+		pointer-events: none;
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			opacity 0.22s ease,
+			visibility 0.22s ease;
+	}
+
+	.share-modal--open {
+		pointer-events: auto;
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.share-modal__backdrop {
+		position: absolute;
+		inset: 0;
+		border: none;
+		background: rgba(0, 0, 0, 0.55);
+		cursor: pointer;
+	}
+
+	.share-modal__panel {
+		position: relative;
+		z-index: 1;
+		width: min(100%, 460px);
+		padding: 28px 24px 24px;
+		border-radius: 12px;
+		background: var(--share-page-gradient);
+		color: #f6f0e3;
+		box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+		transform: translateY(8px) scale(0.98);
+		transition: transform 0.22s ease;
+	}
+
+	.share-modal--open .share-modal__panel {
+		transform: translateY(0) scale(1);
+	}
+
+	.share-modal__close {
+		position: absolute;
+		top: 12px;
+		right: 12px;
+		display: inline-flex;
+		padding: 6px;
+		border: none;
+		border-radius: 8px;
+		background: transparent;
+		color: #f6f0e3;
+		cursor: pointer;
+		opacity: 0.85;
+		transition: opacity 0.2s ease, background-color 0.2s ease;
+	}
+
+	.share-modal__close:hover {
+		opacity: 1;
+		background-color: rgba(255, 255, 255, 0.08);
+	}
+
+	.share-modal__title {
+		margin: 0 32px 8px 0;
+		font-size: 22px;
+		font-weight: 700;
+	}
+
+	.share-modal__collection-name {
+		margin: 0 0 8px;
+		font-size: 15px;
+		font-weight: 600;
+		opacity: 0.95;
+	}
+
+	.share-modal__hint {
+		margin: 0 0 16px;
+		font-size: 14px;
+		opacity: 0.8;
+		line-height: 1.4;
+	}
+
+	.share-modal__media {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 16px;
+		margin-bottom: 16px;
+	}
+
+	.share-modal__cover {
+		width: 160px;
+		height: 160px;
+		object-fit: cover;
+		border-radius: 8px;
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+		flex-shrink: 0;
+	}
+
+	.share-modal__qr {
+		border-radius: 8px;
+		background: #fff;
+		padding: 8px;
+		box-sizing: content-box;
+		flex-shrink: 0;
+	}
+
+	.share-modal__url {
+		margin: 0 0 16px;
+		font-size: 12px;
+		line-height: 1.4;
+		word-break: break-all;
+		opacity: 0.75;
+		text-align: center;
+	}
+
+	.share-modal__actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 12px;
+	}
+
+	@media (max-width: 768px) {
+		.share-modal__media {
+			flex-direction: column;
+		}
+	}
+
+	:global(body.share-modal-open) {
+		overflow: hidden;
+	}
+</style>

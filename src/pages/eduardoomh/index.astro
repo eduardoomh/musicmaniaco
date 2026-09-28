@@ -1,0 +1,50 @@
+---
+import ProfilePage from '../../components/profile/ProfilePage.astro';
+import Layout from '../../layouts/Layout.astro';
+import {
+	buildGradientCss,
+	findCollectionsByUsername,
+	findProfileByUsername,
+	resolveAssetImage,
+} from '../../data';
+import { eduardoomhChromeGradient } from '../../data/eduardoomh-theme';
+import { absoluteUrl, siteOrigin, truncateMetaDescription } from '../../utils/social-meta';
+
+const username = 'eduardoomh';
+const profile = findProfileByUsername(username);
+
+if (!profile) {
+	return new Response(null, { status: 404, statusText: 'Not Found' });
+}
+
+const collections = findCollectionsByUsername(username);
+const avatar = resolveAssetImage(profile.avatar);
+const avatarSrc = typeof avatar === 'string' ? avatar : avatar.src;
+const pageGradient = buildGradientCss(profile.settings.gradient);
+const { gradientStart, gradientEnd, gradientEndAt } = eduardoomhChromeGradient;
+const metaBase = siteOrigin(Astro.site, Astro.url);
+const pageTitle = `${profile.name} (@${profile.username}) · Musicmaniaco`;
+const metaDescription = truncateMetaDescription(
+	`${profile.bio} · ${collections.length} colecciones en Musicmaniaco.`,
+);
+const ogImage = absoluteUrl(avatarSrc, metaBase);
+---
+
+<Layout
+	title={pageTitle}
+	description={metaDescription}
+	image={ogImage}
+	canonicalPath="/eduardoomh"
+	ogType="profile"
+	twitterCard="summary_large_image"
+	gradientStart={gradientStart}
+	gradientEnd={gradientEnd}
+	gradientEndAt={gradientEndAt}
+>
+	<ProfilePage
+		profile={profile}
+		collections={collections}
+		pageGradient={pageGradient}
+		avatarSrc={avatarSrc}
+	/>
+</Layout>

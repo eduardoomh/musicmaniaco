@@ -6,13 +6,13 @@
         "updatedAt": "2026-09-25T12:00:00.000Z",
         "userId": "user-1",
         "image": "collections/lory´s-version.JPG",
-        "description": "this music collection is a compilation of my favorite songs from the 90s and 2000s.",
+        "description": "Lory’s Version es una colección musical nacida de un sentimiento que comenzó allá por 2024, sin saber todo lo que llegaría a significar. Desde entonces, ese sentimiento ha ido creciendo con el tiempo, entre momentos, recuerdos y todo aquello que a veces no sé cómo decirte. Y aunque han pasado los meses, aquí seguimos, escribiendo nuestra historia una canción a la vez. Una colección de amor, compromiso y sentimientos encontrados; mi manera de ponerle música a todo lo que siento por ti.",
         "user": {
             "id": "user-1",
             "name": "Eduardo Martínez",
             "email": "eduardoomh@outlook.com",
             "username": "eduardoomh",
-            "avatar": "https://github.com/eduardoomh.png",
+            "avatar": "/collections/eduardoomh.jpeg",
             "bio": "I'm a software engineer and music producer."
         },
         "status": "active",
@@ -265,14 +265,14 @@
         "createdAt": "2026-09-25T12:00:00.000Z",
         "updatedAt": "2026-09-25T12:00:00.000Z",
         "userId": "user-1",
-        "image": "collections/olvidaste-tus-flotadores.JPG",
+        "image": "collections/olvidaste-tus-flotadores.jpeg",
         "description": "this music collection is a compilation of my favorite songs from the 90s and 2000s.",
         "user": {
             "id": "user-1",
             "name": "Eduardo Martínez",
             "email": "eduardoomh@outlook.com",
             "username": "eduardoomh",
-            "avatar": "https://github.com/eduardoomh.png",
+            "avatar": "/collections/eduardoomh.jpeg",
             "bio": "I'm a software engineer and music producer."
         },
         "status": "active",
