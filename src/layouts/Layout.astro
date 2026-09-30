@@ -3,7 +3,6 @@ import { Font } from 'astro:assets';
 import Footer from '../components/Footer.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteMeta from '../components/SiteMeta.astro';
-import maniacoFavicon from '../assets/maniaco-favicon.ico';
 import defaultShareImage from '../assets/music.maniaco-full-logo-negative.svg';
 
 interface Props {
@@ -33,6 +32,7 @@ const {
 const metaBase = Astro.site ?? Astro.url;
 const canonical = canonicalPath ? new URL(canonicalPath, metaBase).href : undefined;
 const shareImage = image ?? new URL(defaultShareImage.src, metaBase).href;
+const faviconUrl = new URL('/favicon.ico', metaBase).href;
 
 const chromeBackground = `linear-gradient(90deg, ${gradientStart} 0%, ${gradientEnd} ${gradientEndAt}%)`;
 const htmlStyle = [
@@ -53,8 +53,9 @@ const htmlStyle = [
 		<meta name="theme-color" content={gradientStart} media="(prefers-color-scheme: light)" />
 		<meta name="theme-color" content={gradientStart} media="(prefers-color-scheme: dark)" />
 		<meta name="color-scheme" content="dark" />
-		<link rel="icon" href={maniacoFavicon} type="image/x-icon" />
-		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" href={faviconUrl} sizes="any" type="image/x-icon" />
+		<link rel="shortcut icon" href={faviconUrl} type="image/x-icon" />
+		<link rel="apple-touch-icon" href={faviconUrl} />
 		<title>{title}</title>
 		<SiteMeta
 			title={title}

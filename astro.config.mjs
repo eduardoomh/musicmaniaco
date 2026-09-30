@@ -5,6 +5,9 @@ import { defineConfig, fontProviders } from 'astro/config';
 export default defineConfig({
 	// URL pública del sitio (previews en redes y sitemap). Ajusta al dominio real en producción.
 	site: 'https://musicmaniaco.com',
+	devToolbar: {
+		enabled: false,
+	},
 	server: {
 		host: true,
 	},
